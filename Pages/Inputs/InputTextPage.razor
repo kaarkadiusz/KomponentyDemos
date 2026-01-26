@@ -1,0 +1,60 @@
+﻿@using Komponenty.Inputs
+@using Piaskownica.Classes
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Inputs.InputText
+@using static Piaskownica.Classes.LocalizationBase
+@inherits WasmComponentBase
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @Resources.BasicExampleDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputTextBasicDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter" />
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.CommonParameters />
+        <CommonParametersParagraph ComponentType="typeof(KAInputText)" />
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.ValidTypes/>
+        <ValidTypesParagraph ComponentType="typeof(KAInputText)" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.MaxLengthTitle />
+        <SimplePageParagraph>
+            @Resources.MaxLengthDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputTextMaxLengthDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAInputText)</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAInputText" />
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+    private static class Resources
+    {
+        public static RenderFragment BasicExampleDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Komponent <span class="component">KAInputText</span> naśladuje zachowanie standardowego komponentu <span class="component">InputText</span> platformy Blazor.</span>,
+        _ or LocalizationVariant.EN => @<span>The <span class="component">KAInputText</span> component mimics the behavior of a standard Blazor's <span class="component">InputText</span> component.</span>,
+    };
+        public static string MaxLengthTitle => nameof(KAInputText.MaxLength);
+        public static RenderFragment MaxLengthDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+            @<span>
+    Parametr <span class="parameter">MaxLength</span> określa maksymalną liczbę znaków, jaką użytkownik może wprowadzić w polu.
+    Parametr ten określa jedynie atrybut <span class="attribute">maxlength</span> i choć w większości przypadków jest to wystarczające, wszelkie operacje sprawdzania poprawności oparte na długości wprowadzonych danych powinny być wykonywane oddzielnie.
+</span>,
+        _ or LocalizationVariant.EN => @<span>
+    The <span class="parameter">MaxLength</span> parameter sets the maximum number of characters that user may input into the field.
+    This parameter only sets the <span class="attribute">maxlength</span> attribute and while most of the time this is sufficient, any validation logic based on input's length should be done separately.
+</span>,
+        };
+    }
+}

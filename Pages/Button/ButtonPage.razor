@@ -1,0 +1,95 @@
+﻿@using Komponenty.Basic
+@using Komponenty.Classes
+@using Piaskownica.Classes
+@using Piaskownica.Components
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Button
+@attribute [Route(Metadata.Pages.Button)]
+@inherits WasmComponentBase
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @((MarkupString)ButtonPageResources.BasicExampleDescription)
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ButtonBasicDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@ButtonPageResources.TypeTitle />
+        <SimplePageParagraph>
+            @((MarkupString)ButtonPageResources.TypeDescription)
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ButtonTypeDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@ButtonPageResources.SizeTitle />
+        <SimplePageParagraph>
+            @((MarkupString)ButtonPageResources.SizeDescription)
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ButtonSizeDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@ButtonPageResources.ColorTitle />
+        <SimplePageParagraph>
+            @((MarkupString)ButtonPageResources.ColorDescription)
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ButtonColorDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@ButtonPageResources.IconsTitle />
+        <SimplePageParagraph>
+            @((MarkupString)ButtonPageResources.IconsDescription1) <br />
+            @((MarkupString)ButtonPageResources.IconsDescription2)
+        </SimplePageParagraph>
+        <SimplePageParagraph>
+            @(BasicResources.LearnMore): <a href="@(Metadata.Pages.Icon)" class="reference">Icons</a>
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ButtonIconsDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@ButtonPageResources.IconButtonTitle />
+        <SimplePageParagraph>
+            @((MarkupString)ButtonPageResources.IconButtonDescription)
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="IconButtonDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@ButtonPageResources.ButtonGroupTitle />
+        <SimplePageParagraph>
+            @((MarkupString)ButtonPageResources.ButtonGroupDescription)
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ButtonGroupBasicDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@ButtonPageResources.ButtonGroupDirectionTitle />
+        <SimplePageParagraph>
+            @((MarkupString)ButtonPageResources.ButtonGroupDirectionDescription)
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ButtonGroupDirectionDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@ButtonPageResources.ButtonGroupOverridesTitle />
+        <SimplePageParagraph>
+            @((MarkupString)ButtonPageResources.ButtonGroupOverridesDescription)
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ButtonGroupOverridesDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.Remarks />
+        <SimplePageParagraph>
+            <ul>
+                <li>
+                    @((MarkupString)ButtonPageResources.TypeAttributeRemark)
+                </li>
+            </ul>
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">Button</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAButton" />
+
+        <SimplePageParagraph>
+            <span class="component">ButtonGroup</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAButtonGroup" />
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+}

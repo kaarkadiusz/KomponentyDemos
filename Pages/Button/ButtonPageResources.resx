@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ColorDescription" xml:space="preserve">
+    <value>Use the &lt;span class="parameter"&gt;Color&lt;/span&gt; parameter to change the color of the button.</value>
+  </data>
+  <data name="ColorTitle" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="SizeDescription" xml:space="preserve">
+    <value>Use the &lt;span class="parameter"&gt;Size&lt;/span&gt; parameter to change the size of the button.</value>
+  </data>
+  <data name="SizeTitle" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="BasicExampleDescription" xml:space="preserve">
+    <value>Use the &lt;span class="component"&gt;KAButton&lt;/span&gt; component to render a standard HTML button tag that contains a number of commonly used parameters.</value>
+  </data>
+  <data name="TypeTitle" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="TypeDescription" xml:space="preserve">
+    <value>Use the &lt;span class="parameter"&gt;Type&lt;/span&gt; parameter to change the variant of the button.</value>
+  </data>
+  <data name="IconsTitle" xml:space="preserve">
+    <value>Icons</value>
+  </data>
+  <data name="IconsDescription1" xml:space="preserve">
+    <value>Use the &lt;span class="parameter"&gt;StartIcon&lt;/span&gt; and &lt;span class="parameter"&gt;EndIcon&lt;/span&gt; parameters to set the icons that appear before and after the button's text. You can use either one of them or both at the same time.</value>
+  </data>
+  <data name="IconsDescription2" xml:space="preserve">
+    <value>The value you provide is passed on to the &lt;span class="component"&gt;KAIcon&lt;/span&gt; component, so it follows the same rules that apply for that parameter in that component.</value>
+  </data>
+  <data name="TypeAttributeRemark" xml:space="preserve">
+    <value>By default, the &lt;span class="component"&gt;KAButton&lt;/span&gt; component sets the value of &lt;span class="attribute"&gt;type&lt;/span&gt; attribute to &lt;span class="value"&gt;button&lt;/span&gt; value. One may change it by simply setting the attribute like any other component parameter.</value>
+  </data>
+  <data name="IconButtonTitle" xml:space="preserve">
+    <value>Icon button</value>
+  </data>
+  <data name="IconButtonDescription" xml:space="preserve">
+    <value>You may set only one of the icons to render an icon button.</value>
+  </data>
+  <data name="ButtonGroupTitle" xml:space="preserve">
+    <value>KAButtonGroup</value>
+  </data>
+  <data name="ButtonGroupDescription" xml:space="preserve">
+    <value>Use the &lt;span class="component"&gt;KAButtonGroup&lt;/span&gt; wrapper to create a group of buttons. </value>
+  </data>
+  <data name="ButtonGroupOverridesDescription" xml:space="preserve">
+    <value>By default, &lt;span class="component"&gt;KAButtonGroup&lt;/span&gt; wrapper doesn't force the buttons to conform to a single style setting. However one may set &lt;span class="parameter"&gt;Color&lt;/span&gt;, &lt;span class="parameter"&gt;Size&lt;/span&gt; or &lt;span class="parameter"&gt;Type&lt;/span&gt; parameters to forcefully override the individual button styles.</value>
+  </data>
+  <data name="ButtonGroupDirectionDescription" xml:space="preserve">
+    <value>Use the &lt;span class="parameter"&gt;Direction&lt;/span&gt; parameter to switch between displaying group in a row or in a column.</value>
+  </data>
+  <data name="ButtonGroupDirectionTitle" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="ButtonGroupOverridesTitle" xml:space="preserve">
+    <value>Overrides</value>
+  </data>
+</root>

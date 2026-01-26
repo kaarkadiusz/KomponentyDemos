@@ -1,0 +1,10 @@
+﻿.culturechanger {
+    display: flex;
+    gap: 4px;
+}
+
+button {
+    border: none;
+    border-radius: 50px;
+    line-height: 1.2;
+}

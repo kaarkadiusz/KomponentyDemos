@@ -1,0 +1,14 @@
+﻿.themechanger {
+    display: flex;
+    gap: 4px;
+}
+
+button {
+    border: none;
+    border-radius: 50px;
+    line-height: 1;
+}
+
+::deep .ico-plane::before {
+    content: "☐";
+}

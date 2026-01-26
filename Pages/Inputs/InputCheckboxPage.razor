@@ -1,0 +1,93 @@
+﻿@using Komponenty.Inputs
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Inputs.InputCheckbox
+@using static Piaskownica.Classes.LocalizationBase
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @Resources.IntroDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputCheckboxBasicDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.CommonParameters />
+        <CommonParametersParagraph ComponentType="typeof(KAInputCheckbox<bool>)" />
+
+        <SimplePageArticleHeading Level="3" Text=@BasicResources.CommonParameters />
+
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.ValidTypes />
+        <ValidTypesParagraph ComponentType="typeof(KAInputCheckbox<bool>)" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ThreeStatesTitle />
+        <SimplePageParagraph>
+            @Resources.ThreeStatesDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputCheckboxThreeStateDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.CustomIconsTitle />
+        <SimplePageParagraph>
+            @Resources.CustomIconsDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputCheckboxCustomIconsDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ColorTitle />
+        <SimplePageParagraph>
+            @Resources.ColorDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputCheckboxColorDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter"/>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAInputCheckbox<bool>)@("<bool>")</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAInputCheckbox<bool>" />
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+    private static class Resources
+    {
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Komponent <span class="component">@nameof(KAInputCheckbox<>)</span> naśladuje zachowanie standardowego komponentu <span class="component">@nameof(InputCheckbox)</span> platformy Blazor.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="component">@nameof(KAInputCheckbox<>)</span> component mimics the behavior of a standard Blazor's <span class="component">@nameof(InputCheckbox)</span> component.</span>
+        };
+
+        public static string ThreeStatesTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Trzystanowy checkbox",
+            _ or LocalizationVariant.EN => "Three state checkbox"
+        };
+        public static RenderFragment ThreeStatesDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj nullowalnej wartości boolowskiej (<code>bool?</code>) jako typu wartości, aby wyrenderować pole wyboru z trzema możliwymi stanami.</span>,
+            _ or LocalizationVariant.EN => @<span>Use a nullable boolean (<code>bool?</code>) as value type to render a checkbox with three possible states.</span>
+        };
+
+        public static string CustomIconsTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Niestandardowe ikony",
+            _ or LocalizationVariant.EN => "Custom icons"
+        };
+        public static RenderFragment CustomIconsDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Możesz ustawić parametry <span class="parameter">@nameof(KAInputCheckbox<>.CheckedIcon)</span>, <span class="parameter">@nameof(KAInputCheckbox<>.UncheckedIcon)</span> lub <span class="parameter">@nameof(KAInputCheckbox<>.UnknownIcon)</span>, aby ustawić niestandardowe ikony dla możliwych stanów pola wyboru.</span>,
+            _ or LocalizationVariant.EN => @<span>You may set <span class="parameter">@nameof(KAInputCheckbox<>.CheckedIcon)</span>, <span class="parameter">@nameof(KAInputCheckbox<>.UncheckedIcon)</span> or <span class="parameter">@nameof(KAInputCheckbox<>.UnknownIcon)</span> parameters to set custom icons for checkbox's possible states.</span>
+        };
+
+        public static string ColorTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => nameof(KAInputCheckbox<>.Color),
+            _ or LocalizationVariant.EN => nameof(KAInputCheckbox<>.Color)
+        };
+        public static RenderFragment ColorDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametru @nameof(KAInputCheckbox<>.Color), aby zmienić kolor pola wyboru.</span>,
+            _ or LocalizationVariant.EN => @<span>Use @nameof(KAInputCheckbox<>.Color) parameter to change color of a checkbox.</span>
+        };
+    }
+}

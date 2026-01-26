@@ -1,0 +1,31 @@
+﻿@using static Piaskownica.Classes.LocalizationBase
+
+@if(ValidTypes.Length > 0)
+{
+    <Piaskownica.Components.SimplePage.SimplePageParagraph>
+        <span>
+            @Resources.Intro
+            <span>
+                @((MarkupString)string.Join(", ", ValidTypes.Select(type => $"<code>{type}</code>"))).
+            </span>
+            @Resources.CommonParametersPostScriptum
+        </span>
+        
+    </Piaskownica.Components.SimplePage.SimplePageParagraph>
+}
+
+@code {
+    private static class Resources
+    {
+        public static RenderFragment Intro => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Ten komponent generyczny akceptuje następujący zestaw typów: </span>,
+        _ or LocalizationVariant.EN => @<span>This generic component accepts following set of types: </span>,
+        };
+        public static RenderFragment CommonParametersPostScriptum => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Ustawienie innego typu spowoduje błąd wykonania.</span>,
+        _ or LocalizationVariant.EN => @<span>Setting any other type will result in a runtime error.</span>,
+        };
+    }
+}

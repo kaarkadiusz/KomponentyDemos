@@ -1,0 +1,28 @@
+﻿@using Piaskownica.Classes
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Icons
+@attribute [Route(Metadata.Pages.Icon)]
+@inherits WasmComponentBase
+
+<SimplePage>
+    <SimplePageArticle>
+        <SimplePageArticleHeading Level="1" Text="@BasicResources.Credits" />
+        <SimplePageParagraph>
+            @((MarkupString)IconPageResources.CreditsDescription)
+        </SimplePageParagraph>
+        <SimplePageParagraph>
+            @BasicResources.LearnMore: <a href="https://tabler.io/icons">Tabler Icons</a> <br />
+            @IconPageResources.License: <a href="https://tabler.io/icons">Tabler Licenses</a>
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text="@BasicResources.BasicExample" />
+        <SimplePageParagraph>
+            @((MarkupString)IconPageResources.BasicExampleDescription)
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="IconBasicDemo" />
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+
+}

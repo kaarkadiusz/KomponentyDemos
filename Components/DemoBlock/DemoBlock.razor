@@ -1,0 +1,37 @@
+﻿@using Piaskownica.Classes
+@inherits WasmComponentBase
+@typeparam T
+
+<div class="@GetMainCssClass()">
+    <div class="preview">
+        @if(ChildContent is not null)
+        {
+            @ChildContent
+        }
+        else
+        {
+            <DynamicComponent Type="typeof(T)"/>
+        }
+        <div class="absolute-buttons">
+            <button class="toggle" @onclick="ToggleShowSourceCode">
+                @if(ShowSourceCode)
+                {
+                    <span>@BasicResources.HideCode</span>
+                }
+                else
+                {
+                    <span>@BasicResources.ShowCode</span>
+                }
+            </button>
+        </div>
+    </div>
+    <div class="source-wrapper">
+        <div class="source">
+            <pre><code>@SourceCode</code></pre>
+        </div>
+    </div>
+</div>
+
+@code {
+
+}

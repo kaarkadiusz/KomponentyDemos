@@ -1,0 +1,71 @@
+﻿.demo {
+    display: grid;
+    grid-template-rows: fit-content(800px) 0fr;
+    border: 1px solid var(--base-6);
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    transition: grid-template-rows 0.2s ease-in-out;
+}
+
+    .demo.showsourcecode {
+        grid-template-rows: fit-content(800px) 1fr;
+        border-radius: 8px;
+    }
+
+    .demo.displaystyle-FlexCenter > .preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .demo.displaystyle-GridColumnCenter > .preview {
+        display: grid;
+        grid-template-columns: fit-content(250px);
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .preview {
+        padding: 2rem 1.25rem;
+        position: relative;
+        background: var(--base-2);
+    }
+
+.absolute-buttons {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    font-size: 80%;
+}
+
+button.toggle {
+    all: unset;
+    cursor: pointer;
+    color: var(--base-11);
+    padding: 0 4px;
+}
+
+.source-wrapper {
+    overflow: hidden;
+}
+
+.source {
+    overflow: auto;
+    background: var(--accent-a2);
+    padding: 0.5rem 0.25rem;
+    font-size: 90%;
+    font-family: Consolas;
+    max-height: 300px;
+}
+
+pre {
+    height: 100%;
+    margin: 0;
+}
+
+code {
+    white-space: pre-wrap;
+    word-break: break-all;
+}

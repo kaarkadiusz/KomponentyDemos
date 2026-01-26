@@ -1,0 +1,14 @@
+﻿<KAButton Text="Add" StartIcon="@Komponenty.Icons.Preset.Fill.CirclePlus" Color="Color.Success" />
+<KAButton Text="Delete" StartIcon="@Komponenty.Icons.Preset.Fill.Trash" Color="Color.Danger" />
+<KAButton Text="Move" StartIcon="@svgA" EndIcon="@svgB" Color="Color.Secondary" />
+
+@code {
+    string svgA =
+        @"<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 24 24"">
+        <text x = ""6"" y=""20"" font-size=""20"" fill=""currentColor"" font-family=""Arial Black"">A</text
+        </svg>";
+    string svgB = 
+        @"<svg xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 24 24"">
+        <text x = ""6"" y=""20"" font-size=""20"" fill=""currentColor"" font-family=""Arial Black"">B</text
+        </svg>";
+}

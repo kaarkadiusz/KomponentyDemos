@@ -1,0 +1,108 @@
+﻿nav {
+    height: 100%;
+    position: sticky;
+    top: 0;
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    gap: 4px;
+    background-color: var(--accent-2);
+    color: var(--base-12);
+}
+
+.brand {
+    background-color: var(--accent-a3);
+    color: var(--accent-12);
+    position: sticky;
+    top: 0;
+    padding: 0.5rem 0.5rem;
+}
+
+    .brand > h2 {
+        font-weight: 700;
+        margin: 0;
+    }
+
+.pages {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 1rem 0.5rem;
+}
+
+.group {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+}
+
+    .group > .pages {
+        padding: 0.5rem 0.5rem;
+    }
+
+button.sidebar-item {
+    background-color: transparent;
+    border: none;
+    color: unset;
+    text-align: left;
+    font-size: inherit;
+    font-family: inherit;
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    padding-left: 8px;
+}
+
+    button.sidebar-item::before {
+        display: none;
+    }
+
+footer {
+    background-color: var(--accent-a3);
+    color: var(--accent-12);
+    padding: 0.5rem;
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+::deep .sidebar-item {
+    --sidebarItemPrimaryColor: var(--accent-9);
+}
+
+::deep .sidebar-item {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    text-decoration: unset;
+    color: unset;
+    line-height: 1.2;
+    padding: 0.25em;
+    border-radius: 4px;
+    transition: background-color 0.1s ease-in-out;
+}
+
+    ::deep .sidebar-item.active {
+        background-color: color-mix(in srgb, var(--sidebarItemPrimaryColor) 10%, transparent);
+    }
+
+    ::deep .sidebar-item:hover {
+        background-color: color-mix(in srgb, var(--sidebarItemPrimaryColor) 20%, transparent);
+    }
+
+    ::deep .sidebar-item:before {
+        content: "";
+        background-color: var(--sidebarItemPrimaryColor);
+        border-radius: 8px;
+        margin-right: 0.25em;
+        height: 100%;
+        width: 0;
+        translate: -6px;
+        opacity: 0;
+        transition: translate 0.2s ease-in-out, width 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    }
+
+    ::deep .sidebar-item.active:before {
+        width: 4px;
+        translate: 0;
+        opacity: 1;
+    }

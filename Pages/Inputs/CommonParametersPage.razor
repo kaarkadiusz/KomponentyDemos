@@ -1,0 +1,179 @@
+﻿@using Komponenty.Inputs
+@using Piaskownica.Components.SimplePage
+@using System.Reflection
+@using static Piaskownica.Classes.LocalizationBase
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.CommonParametersTitle />
+        <SimplePageParagraph>
+            @Resources.CommonParametersDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text="@nameof(KAInputBase<>.Label)" />
+        <SimplePageParagraph>
+            @Resources.LabelDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.CommonParameters.LabelDemo" />
+
+        <SimplePageArticleHeading Level="1" Text="@nameof(KAInputBase<>.HelperText)" />
+        <SimplePageParagraph>
+            @Resources.HelperTextDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.CommonParameters.HelperTextDemo" />
+
+        <SimplePageArticleHeading Level="1" Text="@Resources.DisabledReadOnlyTitle" />
+        <SimplePageParagraph>
+            @Resources.DisabledAndReadOnlyDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.CommonParameters.DisabledAndReadOnlyDemo" />
+
+        <SimplePageArticleHeading Level="1" Text="Adornment" />
+        <SimplePageParagraph>
+            @Resources.AdornmentDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="2" Text="@nameof(KAInputBase<>.AdornmentPosition)" />
+        <SimplePageParagraph>
+            @Resources.AdornmentPositionDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.CommonParameters.AdornmentPositionDemo" />
+
+        <SimplePageArticleHeading Level="2" Text="@Resources.AdornmentTextAndAdornmentIconTitle" />
+        <SimplePageParagraph>
+            @Resources.AdornmentTextAndAdornmentIconDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.CommonParameters.AdornmentTextAndAdornmentIconDemo" />
+
+        <SimplePageArticleHeading Level="1" Text="@nameof(KAInputBase<>.Type)" />
+        <SimplePageParagraph>
+            @Resources.TypeDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.CommonParameters.TypeDemo" />
+
+        <SimplePageArticleHeading Level="1" Text="@nameof(KAInputBase<>.ValueEvent)" />
+        <SimplePageParagraph>
+            @Resources.ValueEventDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.CommonParameters.ValueEventDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter"/>
+
+        <SimplePageArticleHeading Level="1" Text="@Resources.ValidationTitle" />
+        <SimplePageParagraph>
+            @Resources.ValidationDescription
+        </SimplePageParagraph>
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+    private static class Resources
+    {
+        public static string CommonParametersTitle => typeof(Metadata.Pages.Inputs).GetField(nameof(Metadata.Pages.Inputs.CommonParameters))?.GetCustomAttribute<TranslatedAttribute>()?.Localized ?? "Common Parameters";
+        public static string CommonParametersDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Większość komponentów wejściowych ma wspólny zestaw często używanych parametrów. Wyjątkiem są komponenty, w których wdrożenie określonych parametrów jest zbędne, trudne lub niemożliwe.",
+            _ or LocalizationVariant.EN => "Most of the input components share a set of commonly used parameters. The exceptions are components in which implementation of specific parameters is redundant, difficult or not possible."
+        };
+
+        public static RenderFragment LabelDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Parametr <span class="parameter">@nameof(KAInputBase<>.Label)</span> umożliwia nadanie nazwy komponentowi wejścia. Zasadniczo opisuje on co wprowadza użytkownik.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="parameter">@nameof(KAInputBase<>.Label)</span> parameter enables naming of an input component. Generally it describes what user inputs.</span>
+        };
+
+        public static RenderFragment HelperTextDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Parametr <span class="parameter">@nameof(KAInputBase<>.HelperText)</span> służy do udzielania użytkownikowi wskazówek lub opisywania mu wprowadzanych danych za pomocą krótkiego opisu.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="parameter">@nameof(KAInputBase<>.HelperText)</span> parameter is used to guide the user or describe the input to them with a short description.</span>,
+        };
+
+        public static string DisabledReadOnlyTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Disabled i ReadOnly",
+            _ or LocalizationVariant.EN => "Disabled and ReadOnly"
+        };
+        public static RenderFragment DisabledAndReadOnlyDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Parametry <span class="parameter">@nameof(KAInputBase<>.Disabled)</span> i <span class="parameter">@nameof(KAInputBase<>.ReadOnly)</span> ustawiają odpowiednio atrybuty <span class="attribute">disabled</span> i <span class="attribute">readonly</span> oraz uniemożliwiają zmianę wartości.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="parameter">@nameof(KAInputBase<>.Disabled)</span> and <span class="parameter">@nameof(KAInputBase<>.ReadOnly)</span> parameters set the <span class="attribute">disabled</span> and <span class="attribute">readonly</span> attributes respectively and disable value changing.</span>,
+        };
+
+        public static RenderFragment AdornmentDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+            @<span>
+    Zestaw parametrów <strong>Adornement</strong> służy do renderowania tekstu dekoracyjnego lub ikony obok wejścia.
+    Aby renderować element dekoracyjny, należy ustawić parametr <span class="parameter">@nameof(KAInputBase<>.AdornmentPosition)</span> oraz jeden z parametrów <span class="parameter">@nameof(KAInputBase<>.AdornmentText)</span> lub <span class="parameter">@nameof(KAInputBase<>.AdornmentIcon)</span>.
+    Jeśli ustawiono oba, priorytet ma parametr <span class="parameter">@nameof(KAInputBase<>.AdornmentText)</span>.
+</span>,
+            _ or LocalizationVariant.EN =>
+            @<span>
+    The <strong>Adornement</strong> set of parameters is used to render a decorative text or an icon beside an input.
+    For the adornment to render the <span class="parameter">@nameof(KAInputBase<>.AdornmentPosition)</span> parameter must be set and either one of <span class="parameter">@nameof(KAInputBase<>.AdornmentText)</span> or <span class="parameter">@nameof(KAInputBase<>.AdornmentIcon)</span> parameters must be set.
+    If both are set, the <span class="parameter">@nameof(KAInputBase<>.AdornmentText)</span> parameter takes priority.
+</span>,
+        };
+
+        public static RenderFragment AdornmentPositionDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+            @<span>
+    Parametr <span class="parameter">@nameof(KAInputBase<>.AdornmentPosition)</span> określa stronę wejścia, po której zostanie wyrenderowana ozdoba.
+</span>,
+            _ or LocalizationVariant.EN =>
+            @<span>
+    The <span class="parameter">@nameof(KAInputBase<>.AdornmentPosition)</span> parameter decides the side of an input on which the adornment will be rendered.
+</span>,
+        };
+
+        public static string AdornmentTextAndAdornmentIconTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => $"{nameof(KAInputBase<>.AdornmentText)} i {nameof(KAInputBase<>.AdornmentIcon)}",
+            _ or LocalizationVariant.EN => $"{nameof(KAInputBase<>.AdornmentText)} and {nameof(KAInputBase<>.AdornmentIcon)}"
+        };
+        public static RenderFragment AdornmentTextAndAdornmentIconDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+            @<span>
+    Parametr <span class="parameter">@nameof(KAInputBase<>.AdornmentText)</span> służy do renderowania zwykłego tekstu jako ozdoby. <br />
+    Parametr <span class="parameter">@nameof(KAInputBase<>.AdornmentIcon)</span> służy do renderowania ikony jako ozdoby.
+</span>,
+            _ or LocalizationVariant.EN =>
+            @<span>
+    The <span class="parameter">@nameof(KAInputBase<>.AdornmentText)</span> parameter is used to render plain text as an adornment. <br />
+    The <span class="parameter">@nameof(KAInputBase<>.AdornmentIcon)</span> parameter is used to render an icon as an adornment.
+</span>,
+        };
+
+        public static RenderFragment TypeDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Parametr <span class="parameter">@nameof(KAInputBase<>.Type)</span> służy do przełączania między wariantami stylu wejścia.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="parameter">@nameof(KAInputBase<>.Type)</span> parameter is used to switch between input's style variants.</span>,
+        };
+
+        public static RenderFragment ValueEventDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => 
+            @<span>
+    Parametr <span class="parameter">ValueEvent</span> służy do zmiany zdarzenia powiązanego z HTML.
+    Ogólnie rzecz biorąc, jest to wybór między wywołaniem funkcji zwrotnej po zmianie wartości i utracie fokusu przez element (<code>onchange</code>) lub natychmiast po zmianie wartości elementu (<code>oninput</code>).
+</span>,
+            _ or LocalizationVariant.EN =>
+            @<span>
+    The <span class="parameter">ValueEvent</span> parameter is used to change HTML bound event.
+    In general this is a choice between firing a callback after the value is changed and element loses focus (<code>onchange</code>) or immiediately after the value of an element has changed (<code>oninput</code>).
+</span>,
+        };
+            
+        public static string ValidationTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Walidacja",
+            _ or LocalizationVariant.EN => "Validation"
+        };
+        public static RenderFragment ValidationDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Zestaw parametrów walidacji służy do obsługi niestandardowej walidacji pól wprowadzania danych. Więcej informacji można znaleźć na stronie poświęconej <a href=@(Pages.Inputs.Validation)>walidacji</a>.</span>,
+            _ or LocalizationVariant.EN => @<span>The validation set of parameters is used to handle custom validation of input fields. For more information, refer to <a href=@(Pages.Inputs.Validation)>validation</a> page.</span>,
+        };
+    }
+}

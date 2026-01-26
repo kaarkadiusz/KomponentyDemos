@@ -1,0 +1,111 @@
+﻿@using Komponenty.Inputs
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Inputs.InputNumber
+@using static Piaskownica.Classes.LocalizationBase
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @Resources.IntroDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputNumberBasicDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.CommonParameters />
+        <CommonParametersParagraph ComponentType="typeof(KAInputNumber<int>)" />
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.ValidTypes />
+        <ValidTypesParagraph ComponentType="typeof(KAInputNumber<int>)" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.MinMaxTitle />
+        <SimplePageParagraph>
+            @Resources.MinMaxDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputNumberMinMaxDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter"/>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.StepTitle />
+        <SimplePageParagraph>
+            @Resources.StepDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputNumberStepDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.UseSpinButtonTitle />
+        <SimplePageParagraph>
+            @Resources.UseSpinButtonDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputNumberUseSpinButtonDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.Remarks />
+        <SimplePageParagraph>
+            <ul>
+                <li>
+                    @Resources.DefaultParametersRemark
+                </li>
+            </ul>
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAInputNumber<int>)@("<int>")</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAInputNumber<int>" />
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+    private static class Resources
+    {
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Komponent <span class="component">@nameof(KAInputNumber<>)</span> naśladuje zachowanie standardowego komponentu <span class="component">@nameof(InputNumber<>)</span> platformy Blazor.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="component">@nameof(KAInputNumber<>)</span> component mimics the behavior of a standard Blazor's <span class="component">@nameof(InputNumber<>)</span> component.</span>
+        };
+
+        public static string MinMaxTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Min i Max",
+            _ or LocalizationVariant.EN => "Min and Max"
+        };
+        public static RenderFragment MinMaxDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametrów <span class="parameter">@nameof(KAInputNumber<>.Min)</span> i <span class="parameter">@nameof(KAInputNumber<>.Max)</span>, aby ustawić zakres dla wprowadzanej wartości. </span>,
+            _ or LocalizationVariant.EN => @<span>Use the <span class="parameter">@nameof(KAInputNumber<>.Min)</span> and <span class="parameter">@nameof(KAInputNumber<>.Max)</span> parameters to set bounds on a number input. </span>
+        };
+
+        public static string StepTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => nameof(KAInputNumber<>.Step),
+            _ or LocalizationVariant.EN => nameof(KAInputNumber<>.Step)
+        };
+        public static RenderFragment StepDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametru <span class="parameter">@nameof(KAInputNumber<>.Step)</span>, aby określić odstęp między prawidłowymi liczbami.</span>,
+            _ or LocalizationVariant.EN => @<span>Use the <span class="parameter">@nameof(KAInputNumber<>.Step)</span> parameter to determine the interval between valid numbers.</span>
+        };
+
+        public static string UseSpinButtonTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => nameof(KAInputNumber<>.UseSpinButton),
+            _ or LocalizationVariant.EN => nameof(KAInputNumber<>.UseSpinButton)
+        };
+        public static RenderFragment UseSpinButtonDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Ustaw <span class="parameter">@nameof(KAInputNumber<>.UseSpinButton)</span> na <code>true</code>, aby wyświetlić przycisk obrotowy.</span>,
+            _ or LocalizationVariant.EN => @<span>Set <span class="parameter">@nameof(KAInputNumber<>.UseSpinButton)</span> to <code>true</code> to display spin button.</span>
+        };
+
+        public static RenderFragment DefaultParametersRemark => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+    Jeśli parametr typu jest ustawiony na typ wartościowy, parametry <span class="parameter">@(nameof(KAInputNumber<>.Min))</span>, <span class="parameter">@(nameof(KAInputNumber<>.Max))</span> i <span class="parameter">@(nameof(KAInputNumber<>.Step))</span> są ustawiane na wartości domyślne (jak pokazano w tabeli parametrów).
+            Takie zachowanie jest normalne przy pracy z klasami generycznymi w języku C#, a ograniczenie parametru typu nie byłoby poprawne ze względu na wykluczenie typów nullable. 
+            Komponent ignoruje te parametry w przypadku, gdy użytkownik nie ustawił ich jawnie.</span>,
+            _ or LocalizationVariant.EN => @<span>
+    If type parameter is set to a value type, the parameters <span class="parameter">@(nameof(KAInputNumber<>.Min))</span>, <span class="parameter">@(nameof(KAInputNumber<>.Max))</span> and <span class="parameter">@(nameof(KAInputNumber<>.Step))</span> are set to their default values (as seen in parameter table).
+            This behavior is to be expected when working with generic classes in C# and restricting the type parameter wouldn't be correct because of excluding the nullable types. 
+            Component ignores those parameters in a case where user hasn't explicitly set them.</span>
+        };
+    }
+}

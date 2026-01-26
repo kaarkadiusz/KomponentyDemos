@@ -1,0 +1,10 @@
+﻿@using static Piaskownica.Classes.LocalizationBase
+
+
+@code {
+    public static RenderFragment BasicExampleDescription => CurrentLocalization switch
+    {
+        LocalizationVariant.PL => @<span>Komponent <span class="component">KAInputText</span> naśladuje zachowanie standardowego komponentu <span class="component">InputText</span> platformy Blazor.</span>,
+        _ or LocalizationVariant.EN => @<span>The <span class="component">KAInputText</span> component mimics the behavior of a standard Blazor's <span class="component">InputText</span> component.</span>,
+    };
+}

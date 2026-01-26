@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<OverrideHtmlAssetPlaceholders>true</OverrideHtmlAssetPlaceholders>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="10.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Komponenty\Komponenty.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Demos\**\*.razor" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Components\ParametersTable\ParametersTableResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>ParametersTableResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Metadata\BasicResources.cs">
+			<Generator></Generator>
+		</Compile>
+		<Compile Update="Metadata\BasicResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>BasicResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\Button\ButtonPageResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>ButtonPageResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\Icons\IconPageResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>IconPageResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Components\ParametersTable\ParametersTableResources.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>ParametersTableResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Metadata\BasicResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>BasicResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\Button\ButtonPageResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>ButtonPageResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\Icons\IconPageResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>IconPageResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<PropertyGroup>
+		<BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+	</PropertyGroup>
+
+</Project>

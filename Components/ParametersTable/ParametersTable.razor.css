@@ -1,0 +1,37 @@
+﻿table {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+    font-size: 90%;
+}
+
+thead {
+    text-align: left;
+}
+
+tbody {
+    font-family: Consolas;
+    font-size: 90%;
+}
+
+    tbody td {
+        vertical-align: top;
+    }
+
+        tbody td:nth-child(1) {
+            white-space: nowrap;
+        }
+
+        tbody td:nth-child(-n + 2) {
+            word-break: break-word;
+        }
+
+        tbody td:nth-child(3) {
+            word-break: break-all;
+        }
+
+tfoot {
+    font-size: 80%;
+    color: var(--base-11);
+    text-align: right;
+}

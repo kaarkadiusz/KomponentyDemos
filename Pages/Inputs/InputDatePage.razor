@@ -1,0 +1,56 @@
+﻿@using Komponenty.Inputs
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Inputs.InputDate
+@using static Piaskownica.Classes.LocalizationBase
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @Resources.IntroDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputDateBasicDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.CommonParameters />
+        <CommonParametersParagraph ComponentType="typeof(KAInputDate<DateTime>)" />
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.ValidTypes />
+        <ValidTypesParagraph ComponentType="typeof(KAInputDate<DateTime>)" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.MinMaxTitle />
+        <SimplePageParagraph>
+            @Resources.MinMaxDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputDateMinMaxDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter"/>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAInputDate<DateTime>)@("<DateTime>")</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAInputDate<DateTime>" />
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+    private static class Resources
+    {
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Komponent <span class="component">@nameof(KAInputDate<>)</span> naśladuje zachowanie standardowego komponentu <span class="component">@nameof(InputDate<>)</span> platformy Blazor.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="component">@nameof(KAInputDate<>)</span> component mimics the behavior of a standard Blazor's <span class="component">@nameof(InputDate<>)</span> component.</span>
+        };
+
+        public static string MinMaxTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Min i Max",
+            _ or LocalizationVariant.EN => "Min and Max"
+        };
+        public static RenderFragment MinMaxDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametrów <span class="parameter">@nameof(KAInputDate<>.Min)</span> i <span class="parameter">@nameof(KAInputDate<>.Max)</span>, aby ustawić zakres dla wprowadzanej daty. </span>,
+            _ or LocalizationVariant.EN => @<span>Use the <span class="parameter">@nameof(KAInputDate<>.Min)</span> and <span class="parameter">@nameof(KAInputDate<>.Max)</span> parameters to set bounds on a date input. </span>
+        };
+    }
+}

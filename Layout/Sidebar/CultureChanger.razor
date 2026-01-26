@@ -1,0 +1,13 @@
+﻿@using System.Globalization
+
+<div class="culturechanger">
+    @foreach(CultureInfo cultureInfo in SupportedCultures) {
+        <button @onclick="() => ChangeCulture(cultureInfo)">
+            @((MarkupString)GetFlagEmoji(cultureInfo))
+        </button>
+    }
+</div>
+
+@code {
+
+}

@@ -1,0 +1,26 @@
+﻿@using Komponenty.Inputs
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Inputs.InputTextArea
+@using static Piaskownica.Classes.LocalizationBase
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @* @Resources.BasicExampleDescription *@
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputTextAreaBasicDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.CommonParameters />
+        <CommonParametersParagraph ComponentType="typeof(KAInputTextArea)"/>
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.ValidTypes />
+        <ValidTypesParagraph ComponentType="typeof(KAInputTextArea)" />
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+    
+}

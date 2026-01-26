@@ -1,0 +1,83 @@
+﻿.page {
+    display: grid;
+    grid-template-columns: minmax(300px, 800px) fit-content(300px);
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+}
+
+main {
+}
+
+aside {
+    height: fit-content;
+    max-height: calc(100cqh - 2rem);
+    overflow: hidden auto;
+    position: sticky;
+    top: 1rem;
+    min-width: 100px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+}
+
+    li::marker {
+        content: "";
+        width: 0;
+    }
+
+a {
+    text-decoration: none;
+    color: var(--base-11);
+    display: inline-block;
+    width: 100%;
+    padding: 0.05rem 0.5rem 0.05rem 0.25rem;
+    outline: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+    a:is(:hover, :focus-visible) {
+        background-color: var(--base-4);
+    }
+
+    a:focus-visible {
+        border-left: 2px solid var(--blue-7);
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    a.level-1 {
+        font-size: 95%;
+    }
+
+    a.level-2 {
+        font-size: 90%;
+        padding-left: 0.5em;
+    }
+
+    a.level-3 {
+        font-size: 90%;
+        padding-left: 1em;
+    }
+
+    a.level-4 {
+        font-size: 85%;
+        padding-left: 1em;
+    }
+
+    a.level-5 {
+        font-size: 85%;
+        padding-left: 1.5em;
+    }
+
+    a.level-6 {
+        font-size: 80%;
+        padding-left: 1.5em;
+    }

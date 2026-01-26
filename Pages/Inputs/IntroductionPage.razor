@@ -1,0 +1,42 @@
+﻿@using Piaskownica.Components.SimplePage
+@using static Piaskownica.Classes.LocalizationBase
+@attribute [Route(Metadata.Pages.Inputs.Introduction)]
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.Introduction />
+        <SimplePageParagraph>
+            @Resources.Premise1
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.Introduction.InputsTable" />
+        <SimplePageParagraph>
+            @Resources.Premise2
+        </SimplePageParagraph>
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+    private static class Resources
+    {
+        public static string Premise1 => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Wszystkie zaimplementowane komponenty wejściowe mają na celu naśladowanie swoich standardowych odpowiedników w ASP.NET Core Blazor, dodając jednocześnie możliwość dostosowania stylu i różne funkcje.",
+            _ or LocalizationVariant.EN => "All implemented input components aim at mimicking their regular ASP.NET Core Blazor counterparts while adding style customisation and various features."
+        };
+        public static RenderFragment Premise2 => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+@<span>
+    Wszystkie komponenty dziedziczą po klasie bazowej <span class="class">KAInputBase</span> która z kolei dziedziczy po klasie <span class="class">InputBase</span> platformy ASP.NET.
+    Dzięki temu te niestandardowe komponenty działają poprawnie w domyślnym kontekście <span class="class">EditContext</span> platformy ASP.NET (na przykład jako element podrzędny komponentu <span class="component">EditForm</span>).
+</span>,
+            _ or LocalizationVariant.EN =>
+@<span>
+    All components inherit from <span class="class">KAInputBase</span> base class, which further inherits from ASP.NET's <span class="class">InputBase</span>.
+    Thus these custom components work correctly inside a default ASP.NET's <span class="class">EditContext</span> (for example as a child of <span class="component">EditForm</span> component).
+</span>
+        };
+    };
+}

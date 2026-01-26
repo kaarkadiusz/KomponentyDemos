@@ -1,0 +1,80 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>ASP.NET Core</th>
+            <th>KAKomponenty</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>InputCheckbox</td>
+            <td><InputCheckbox @bind-Value="Checkbox" /></td>
+            <td><KAInputCheckbox @bind-Value="Checkbox" /></td>
+        </tr>
+        <tr>
+            <td>InputDate</td>
+            <td><InputDate @bind-Value="Date" /></td>
+            <td><KAInputDate @bind-Value="Date" /></td>
+        </tr>
+        <tr>
+            <td>InputNumber</td>
+            <td><InputNumber @bind-Value="Number" /></td>
+            <td><KAInputNumber @bind-Value="Number" /></td>
+        </tr>
+        <tr>
+            <td>InputRadio</td>
+            <td>
+                <InputRadioGroup @bind-Value="Radio">
+                    <InputRadio Value=@("Radio1") />
+                    <InputRadio Value=@("Radio2") />
+                    <InputRadio Value=@("Radio3") />
+                </InputRadioGroup>
+            </td>
+            <td>
+                <KAInputRadioGroup @bind-Value="Radio">
+                    <KAInputRadio Value=@("Radio1") />
+                    <KAInputRadio Value=@("Radio2") />
+                    <KAInputRadio Value=@("Radio3") />
+                </KAInputRadioGroup>
+            </td>
+        </tr>
+        <tr>
+            <td>InputSelect</td>
+            <td>
+                <InputSelect @bind-Value="Select">
+                    <option>Select1</option>
+                    <option>Select2</option>
+                    <option>Select3</option>
+                </InputSelect>
+            </td>
+            <td>
+                <KAInputSelect @bind-Value="Select">
+                    <KAInputSelectOption Value=@("Select1")>Select1</KAInputSelectOption>
+                    <KAInputSelectOption Value=@("Select2")>Select2</KAInputSelectOption>
+                    <KAInputSelectOption Value=@("Select3")>Select3</KAInputSelectOption>
+                </KAInputSelect>
+            </td>
+        </tr>
+        <tr>
+            <td>InputText</td>
+            <td><InputText @bind-Value="Text" /></td>
+            <td><KAInputText @bind-Value="Text" /></td>
+        </tr>
+        <tr>
+            <td>InputTextArea</td>
+            <td><InputTextArea @bind-Value="TextArea" /></td>
+            <td><KAInputTextArea @bind-Value="TextArea" /></td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    bool Checkbox { get; set; } = false;
+    DateOnly Date { get; set; } = DateOnly.FromDateTime(DateTime.Now);
+    int Number { get; set; } = 2020;
+    string Radio { get; set; } = string.Empty;
+    string Select { get; set; } = nameof(Select);
+    string Text { get; set; } = nameof(Text);
+    string TextArea { get; set; } = nameof(TextArea);
+}

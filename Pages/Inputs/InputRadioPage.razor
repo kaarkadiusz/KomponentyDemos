@@ -1,0 +1,22 @@
+﻿@using Komponenty.Inputs
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Inputs.InputRadio
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @* @Resources.BasicExampleDescription *@
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputRadioBasicDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@BasicResources.CommonParameters />
+        <CommonParametersParagraph ComponentType="typeof(KAInputRadioGroup<string>)" />
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+
+}

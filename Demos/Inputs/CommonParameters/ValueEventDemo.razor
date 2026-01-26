@@ -1,0 +1,8 @@
+﻿<KAInputText ValueEvent="ValueEvent.OnInput" Label="OnInput" @bind-Value="_value" />
+<KAInputText ValueEvent="ValueEvent.OnChange" Label="OnChange" @bind-Value="_value" />
+
+<p>Value: @_value</p>
+
+@code {
+    string _value = string.Empty;
+}

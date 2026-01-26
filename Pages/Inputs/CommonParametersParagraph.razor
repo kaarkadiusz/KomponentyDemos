@@ -1,0 +1,31 @@
+﻿@using static Piaskownica.Classes.LocalizationBase
+
+@if(ParameterNames.Length > 0)
+{
+    <Piaskownica.Components.SimplePage.SimplePageParagraph>
+        @Resources.Intro
+        <ul>
+            @foreach(string parameterName in ParameterNames)
+            {
+                <li><span class="parameter">@parameterName</span></li>
+            }
+        </ul>
+        @Resources.CommonParametersPageRefferal
+    </Piaskownica.Components.SimplePage.SimplePageParagraph>
+}
+
+@code {
+    private static class Resources
+    {
+        public static RenderFragment Intro => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Ten komponent udostępnia zestaw parametrów wspólnie używanych w polach wprowadzania danych:</span>,
+        _ or LocalizationVariant.EN => @<span>This component exposes a set of parameters commonly used in input fields:</span>,
+        };
+        public static RenderFragment CommonParametersPageRefferal => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Więcej informacji na temat często używanych parametrów można znaleźć na stronie poświęconej <a href=@(Pages.Inputs.CommonParameters)>parametrom wspólnym</a>.</span>,
+        _ or LocalizationVariant.EN => @<span>For more information about commonly used parameters refer to <a href=@(Pages.Inputs.CommonParameters)>common parameters</a> page.</span>,
+        };
+    }
+}

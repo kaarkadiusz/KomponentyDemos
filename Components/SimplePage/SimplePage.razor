@@ -1,0 +1,27 @@
+﻿<CascadingValue TValue="SimplePageContext" Name="Context" Value="Context" IsFixed>
+    <div class="page">
+        <main>
+            @ChildContent
+        </main>
+        <aside>
+            <nav>
+                @if(Context.Headings.Count > 0)
+                {
+                    <ul>
+                        @foreach(SimplePageArticleHeading heading in Context.Headings)
+                        {
+                            <li>
+                                <a class="level-@(heading.Level)" @onclick="() => ScrollToHeading(heading.ElementId)">@heading.Text</a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </nav>
+        </aside>
+    </div>
+</CascadingValue>
+
+
+@code {
+
+}

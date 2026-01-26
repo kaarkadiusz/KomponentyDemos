@@ -1,0 +1,50 @@
+﻿
+<nav>
+    <div class="brand">
+        <h2>Komponenty</h2>
+    </div>
+    <div class="pages">
+        @foreach (SidebarItem item in Items)
+        {
+            switch (item)
+            {
+                case SidebarItemLink link:
+                    <NavLink class="sidebar-item" href=@link.Href Match="NavLinkMatch.All">
+                        @link.Title
+                    </NavLink>
+                    break;
+                case SidebarItemGroup group:
+                    <div class="group">
+                        <button type="button" class="sidebar-item" @onclick="() => group.IsExpanded = !group.IsExpanded">
+                            <span>@item.Title</span>
+                            @if(group.IsExpanded)
+                            {
+                                <Komponenty.Icons.KAIcon IconSrc="@Komponenty.Icons.Preset.Outline.CaretDown" Size="Komponenty.Icons.IconSize.Small" />
+                            }
+                            else
+                            {
+                                <Komponenty.Icons.KAIcon IconSrc="@Komponenty.Icons.Preset.Outline.CaretLeft" Size="Komponenty.Icons.IconSize.Small" />
+                            }
+                        </button>
+                        @if (group.IsExpanded)
+                        {
+                            <div class="pages">
+                                @foreach (SidebarItemLink link in group.Children)
+                                {
+                                    <NavLink class="sidebar-item" href=@link.Href Match="NavLinkMatch.All">
+                                        @link.Title
+                                    </NavLink>
+                                }
+                            </div>
+                        }   
+                    </div>
+                    break;
+            }
+        }
+    </div>
+    <footer>
+        <CultureChanger />
+        <ThemeChanger />
+    </footer>
+</nav>
+

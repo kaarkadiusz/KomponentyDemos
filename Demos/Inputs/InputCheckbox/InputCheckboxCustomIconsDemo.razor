@@ -1,0 +1,12 @@
+﻿<KAInputCheckbox CheckedIcon="@Komponenty.Icons.Preset.Fill.Heart"
+                 UncheckedIcon="@Komponenty.Icons.Preset.Outline.Heart"
+                 @bind-Value="_value1" />
+<KAInputCheckbox CheckedIcon="@Komponenty.Icons.Preset.Fill.Heart"
+                 UncheckedIcon="@Komponenty.Icons.Preset.Outline.Heart"
+                 UnknownIcon="@Komponenty.Icons.Preset.Fill.HeartBroken"
+                 @bind-Value="_value2" />
+
+@code {
+    bool _value1;
+    bool? _value2;
+}

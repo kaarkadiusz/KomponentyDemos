@@ -1,0 +1,10 @@
+﻿<KAInputDate Min="_lowerBound" @bind-Value="_value1" Label="Min: set" />
+<KAInputDate Max="_upperBound" @bind-Value="_value1" Label="Max: set" />
+<KAInputDate Min="_lowerBound" Max="_upperBound" @bind-Value="_value1" Label="Min: set; Max: set" />
+
+@code {
+    DateTime _value1 = DateTime.Now;
+
+    DateTime _lowerBound = DateTime.Now.AddDays(-3).Date;
+    DateTime _upperBound = DateTime.Now.AddDays(4).Date.AddSeconds(-1);
+}
