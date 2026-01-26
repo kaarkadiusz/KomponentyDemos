@@ -7,19 +7,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 10.0.x
 
       - name: Publish
         run: dotnet publish -c Release -o build
 
-      - name: Fix base href
-        run: sed -i 's|<base href="/" />|<base href="/<repo-name>/" />|' build/wwwroot/index.html
+      - name: Rewrite base href
+        run: sed -i 's|<base href="/" />|<base href="/KomponentyDemos/" />|' build/wwwroot/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
