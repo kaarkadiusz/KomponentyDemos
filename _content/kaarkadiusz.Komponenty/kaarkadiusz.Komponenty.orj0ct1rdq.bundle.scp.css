@@ -1,0 +1,624 @@
+/* _content/kaarkadiusz.Komponenty/Basic/KAButton.razor.rz.scp.css */
+.kompButton[b-baggor3wh7] {
+    --lightColor: var(--komponenty-default-light);
+    --mainColor: var(--komponenty-default);
+    --darkColor: var(--komponenty-default-dark);
+    --contrastColor: var(--komponenty-default-contrast);
+    --padding: 8px 12px;
+    --textColor: var(--contrastColor);
+    --backgroundColor: var(--lightColor);
+    --hoverColor: var(--mainColor);
+    --pressedColor: var(--darkColor);
+    --borderColor: transparent;
+    --borderWidth: 1px;
+    --borderRadius: 4px;
+    --border: var(--borderWidth) solid var(--borderColor);
+    --boxShadowColor: color-mix(in srgb, var(--komponenty-default) 33%, transparent);
+    --boxShadow: 0px 0px 1.5px 0px var(--boxShadowColor);
+    --fontSize: 1em;
+    --fontWeight: 600;
+    --textTransform: uppercase;
+}
+
+    .kompButton.colorDefault[b-baggor3wh7] {
+        --lightColor: var(--komponenty-default-light);
+        --mainColor: var(--komponenty-default);
+        --darkColor: var(--komponenty-default-dark);
+        --contrastColor: var(--komponenty-default-contrast);
+    }
+
+    .kompButton.colorPrimary[b-baggor3wh7] {
+        --lightColor: var(--komponenty-primary-light);
+        --mainColor: var(--komponenty-primary);
+        --darkColor: var(--komponenty-primary-dark);
+        --contrastColor: var(--komponenty-primary-contrast);
+    }
+
+    .kompButton.colorSecondary[b-baggor3wh7] {
+        --lightColor: var(--komponenty-secondary-light);
+        --mainColor: var(--komponenty-secondary);
+        --darkColor: var(--komponenty-secondary-dark);
+        --contrastColor: var(--komponenty-secondary-contrast);
+    }
+
+    .kompButton.colorInfo[b-baggor3wh7] {
+        --lightColor: var(--komponenty-info-light);
+        --mainColor: var(--komponenty-info);
+        --darkColor: var(--komponenty-info-dark);
+        --contrastColor: var(--komponenty-info-contrast);
+    }
+
+    .kompButton.colorSuccess[b-baggor3wh7] {
+        --lightColor: var(--komponenty-success-light);
+        --mainColor: var(--komponenty-success);
+        --darkColor: var(--komponenty-success-dark);
+        --contrastColor: var(--komponenty-success-contrast);
+    }
+
+    .kompButton.colorWarning[b-baggor3wh7] {
+        --lightColor: var(--komponenty-warning-light);
+        --mainColor: var(--komponenty-warning);
+        --darkColor: var(--komponenty-warning-dark);
+        --contrastColor: var(--komponenty-warning-contrast);
+    }
+
+    .kompButton.colorDanger[b-baggor3wh7] {
+        --lightColor: var(--komponenty-danger-light);
+        --mainColor: var(--komponenty-danger);
+        --darkColor: var(--komponenty-danger-dark);
+        --contrastColor: var(--komponenty-danger-contrast);
+    }
+
+    .kompButton.sizeSmall[b-baggor3wh7] {
+        --fontSize: 0.9em;
+        --padding: 4px 8px;
+    }
+
+    .kompButton.sizeMedium[b-baggor3wh7] {
+        --fontSize: 1em;
+        --padding: 6px 10px;
+    }
+
+    .kompButton.sizeLarge[b-baggor3wh7] {
+        --fontSize: 1.1em;
+        --padding: 8px 12px;
+    }
+
+    .kompButton.typeFilled[b-baggor3wh7] {
+    }
+
+    .kompButton.typeOutlined[b-baggor3wh7] {
+        --borderWidth: 1px;
+        --borderColor: var(--mainColor);
+        --backgroundColor: transparent;
+        --hoverColor: color-mix(in srgb, var(--mainColor) 20%, transparent);
+        --pressedColor: color-mix(in srgb, var(--mainColor) 35%, transparent);
+        --textColor: var(--mainColor);
+    }
+
+    .kompButton.typeTextOnly[b-baggor3wh7] {
+        --borderWidth: 0px;
+        --borderColor: var(--mainColor);
+        --backgroundColor: transparent;
+        --hoverColor: color-mix(in srgb, var(--mainColor) 20%, transparent);
+        --pressedColor: color-mix(in srgb, var(--mainColor) 35%, transparent);
+        --textColor: var(--mainColor);
+        --boxShadow: unset;
+    }
+
+.kompButton[b-baggor3wh7] {
+    border: var(--border);
+    border-radius: var(--borderRadius);
+    padding: var(--padding);
+    color: var(--textColor);
+    background-color: var(--backgroundColor);
+    text-transform: var(--textTransform);
+    box-shadow: var(--boxShadow);
+    font-size: var(--fontSize);
+    font-weight: var(--fontWeight);
+    font-family: var(--font-family);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+    .kompButton:hover[b-baggor3wh7] {
+        background-color: var(--hoverColor);
+    }
+
+    .kompButton:active[b-baggor3wh7] {
+        background-color: var(--pressedColor);
+    }
+/* _content/kaarkadiusz.Komponenty/Basic/KAButtonGroup.razor.rz.scp.css */
+.kompButtonGroup[b-okryjg98rr] {
+    --flexDirection: row;
+}
+
+    .kompButtonGroup.directionRow[b-okryjg98rr] {
+        --flexDirection: row;
+    }
+
+    .kompButtonGroup.directionColumn[b-okryjg98rr] {
+        --flexDirection: column;
+    }
+
+.kompButtonGroup[b-okryjg98rr] {
+    display: inline-flex;
+    flex-direction: var(--flexDirection);
+}
+
+    .kompButtonGroup[b-okryjg98rr] >  .kompButton:not(:first-of-type, :last-of-type) {
+        border-radius: 0;
+    }
+
+    .kompButtonGroup.directionRow[b-okryjg98rr] >  .kompButton:first-of-type {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .kompButtonGroup.directionRow[b-okryjg98rr] >  .kompButton:last-of-type {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .kompButtonGroup.directionColumn[b-okryjg98rr] >  .kompButton:first-of-type {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .kompButtonGroup.directionColumn[b-okryjg98rr] >  .kompButton:last-of-type {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .kompButtonGroup[b-okryjg98rr] >  .kompButton:not(:last-of-type) {
+        border-right-width: 0;
+    }
+
+    .kompButtonGroup.directionRow[b-okryjg98rr] >  .kompButton.typeTextOnly:not(:last-of-type) {
+        border-right-width: 1px;
+    }
+
+    .kompButtonGroup.directionColumn[b-okryjg98rr] >  .kompButton.typeTextOnly:not(:last-of-type) {
+        border-bottom-width: 1px;
+    }
+/* _content/kaarkadiusz.Komponenty/Icons/KAIcon.razor.rz.scp.css */
+i[b-7jf46h8u8l] {
+    --fontSize: 1.25rem;
+    --fontColor: inherit;
+}
+
+    i.sizeInherit[b-7jf46h8u8l] {
+        --fontSize: inherit;
+    }
+
+    i.sizeExtraSmall[b-7jf46h8u8l] {
+        --fontSize: 0.75rem;
+    }
+
+    i.sizeSmall[b-7jf46h8u8l] {
+        --fontSize: 1rem;
+    }
+
+    i.sizeMedium[b-7jf46h8u8l] {
+        --fontSize: 1.25rem;
+    }
+
+    i.sizeLarge[b-7jf46h8u8l] {
+        --fontSize: 1.5rem;
+    }
+
+    i.sizeExtraLarge[b-7jf46h8u8l] {
+        --fontSize: 1.75rem;
+    }
+
+    button.colorDefault[b-7jf46h8u8l] {
+        --fontColor: inherit;
+    }
+
+    button.colorPrimary[b-7jf46h8u8l] {
+        --fontColor: var(--komponenty-primary);
+    }
+
+    button.colorSecondary[b-7jf46h8u8l] {
+        --fontColor: var(--komponenty-secondary);
+    }
+
+    button.colorInfo[b-7jf46h8u8l] {
+        --fontColor: var(--komponenty-info);
+    }
+
+    button.colorSuccess[b-7jf46h8u8l] {
+        --fontColor: var(--komponenty-success);
+    }
+
+    button.colorWarning[b-7jf46h8u8l] {
+        --fontColor: var(--komponenty-warning);
+    }
+
+    button.colorDanger[b-7jf46h8u8l] {
+        --fontColor: var(--komponenty-danger);
+    }
+
+i[b-7jf46h8u8l] {
+    font-style: inherit;
+    display: inline-block;
+    line-height: 0.5;
+    font-size: var(--fontSize);
+    color: var(--fontColor);
+    min-width: 1em;
+    min-height: 1em;
+}
+
+i > svg[b-7jf46h8u8l] {
+    color: inherit;
+}
+/* _content/kaarkadiusz.Komponenty/Inputs/KAInputBaseTemplate.razor.rz.scp.css */
+.kompInputBaseTemplate[b-ixly79mtfn] {
+    --borderRadius: 0;
+    --helperTextColor: var(--komponenty-base-11);
+    --backgroundColor: var(--komponenty-base-a3);
+    --borderNormalColor: var(--komponenty-base-11);
+    --borderSuccessColor: var(--komponenty-success);
+    --borderWarningColor: var(--komponenty-warning);
+    --borderErrorColor: var(--komponenty-danger);
+    --borderWidth: 1px;
+    --borderColor: var(--borderNormalColor);
+    --borderBase: var(--borderWidth) solid var(--borderColor);
+    --borderTop: none;
+    --borderRight: none;
+    --borderBottom: var(--borderBase);
+    --borderLeft: none;
+    --resize: none;
+}
+
+    .kompInputBaseTemplate.typeFilled[b-ixly79mtfn] {
+    }
+
+    .kompInputBaseTemplate.typeOutlined[b-ixly79mtfn] {
+        --borderRadius: 4px;
+        --borderTop: var(--borderBase);
+        --borderRight: var(--borderBase);
+        --borderBottom: var(--borderBase);
+        --borderLeft: var(--borderBase);
+    }
+
+    .kompInputBaseTemplate.validationInitial[b-ixly79mtfn] {
+    }
+
+    .kompInputBaseTemplate.validationSuccess[b-ixly79mtfn] {
+        --borderColor: var(--borderSuccessColor);
+    }
+
+    .kompInputBaseTemplate.validationWarning[b-ixly79mtfn] {
+        --borderColor: var(--borderWarningColor);
+    }
+
+    .kompInputBaseTemplate.validationError[b-ixly79mtfn] {
+        --borderColor: var(--borderErrorColor);
+    }
+
+    .kompInputBaseTemplate.hasValidationMessage[b-ixly79mtfn] {
+        --helperTextColor: var(--borderColor);
+    }
+
+    .kompInputBaseTemplate:has(:disabled)[b-ixly79mtfn] {
+        --borderColor: color-mix(in srgb, var(--borderNormalColor) 70%, transparent);
+    }
+
+.kompInputBaseTemplate[b-ixly79mtfn] {
+    display: flex;
+    flex-direction: column;
+}
+
+.kompInputWrap[b-ixly79mtfn] {
+    display: inline-flex;
+    gap: 4px;
+    padding: 0 8px;
+    background-color: var(--backgroundColor);
+    border-radius: var(--borderRadius);
+    border-color: var(--borderColor);
+    border-top: var(--borderTop);
+    border-right: var(--borderRight);
+    border-bottom: var(--borderBottom);
+    border-left: var(--borderLeft);
+    resize: var(--resize);
+}
+
+    .kompInputWrap:not(:has(:is(:disabled, [readonly]))):is(:focus-within, :active)[b-ixly79mtfn] {
+        border-color: var(--komponenty-primary);
+    }
+
+    .kompInputWrap:has(:disabled)[b-ixly79mtfn] {
+        pointer-events: none;
+        user-select: none;
+        color: color-mix(in srgb, currentColor 70%, transparent);
+    }
+
+.adornment[b-ixly79mtfn] {
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    pointer-events: none;
+}
+
+label[b-ixly79mtfn] {
+    font-size: 75%;
+    color: var(--komponenty-base-12);
+    word-break: break-word;
+}
+
+.helperText[b-ixly79mtfn] {
+    font-size: 70%;
+    color: var(--helperTextColor);
+    word-break: break-word;
+}
+
+.kompInput[b-ixly79mtfn] {
+    flex: 1 1 auto;
+    display: inline-flex;
+    gap: 4px;
+}
+
+    .kompInput[b-ixly79mtfn]  :is(input, textarea, select) {
+        background-color: unset;
+        color: inherit;
+        border: unset;
+        outline: unset;
+        font-size: 0.925em;
+        font-family: var(--font-family);
+        padding: 8px 0;
+        box-sizing: border-box;
+        width: 100%;
+        line-height: 1.5;
+    }
+
+    .kompInput[b-ixly79mtfn]  textarea {
+        resize: none;
+        scrollbar-width: thin;
+        scrollbar-color: var(--komponenty-base-12) transparent;
+    }
+/* _content/kaarkadiusz.Komponenty/Inputs/KAInputCheckbox.razor.rz.scp.css */
+.kompInputCheckboxWrap[b-ep7a9vnyy5] {
+    --color: var(--komponenty-base-12, currentColor);
+    --helperTextColor: var(--komponenty-base-11);
+    --hoverColor: color-mix(in srgb, var(--color) 15%, transparent);
+    --pressedColor: color-mix(in srgb, var(--color) 30%, transparent);
+}
+
+    .kompInputCheckboxWrap.color-Primary[b-ep7a9vnyy5] {
+        --color: var(--komponenty-primary-light);
+    }
+
+    .kompInputCheckboxWrap.color-Secondary[b-ep7a9vnyy5] {
+        --color: var(--komponenty-secondary-light);
+    }
+
+    .kompInputCheckboxWrap.color-Info[b-ep7a9vnyy5] {
+        --color: var(--komponenty-info-light);
+    }
+
+    .kompInputCheckboxWrap.color-Success[b-ep7a9vnyy5] {
+        --color: var(--komponenty-success-light);
+    }
+
+    .kompInputCheckboxWrap.color-Warning[b-ep7a9vnyy5] {
+        --color: var(--komponenty-warning-light);
+    }
+
+    .kompInputCheckboxWrap.color-Danger[b-ep7a9vnyy5] {
+        --color: var(--komponenty-danger-light);
+    }
+
+    .kompInputCheckboxWrap.validation-Success[b-ep7a9vnyy5] {
+        --helperTextColor: var(--komponenty-success);
+    }
+
+    .kompInputCheckboxWrap.validation-Warning[b-ep7a9vnyy5] {
+        --helperTextColor: var(--komponenty-warning);
+    }
+
+    .kompInputCheckboxWrap.validation-Error[b-ep7a9vnyy5] {
+        --helperTextColor: var(--komponenty-danger);
+    }
+
+.kompInputCheckboxWrap[b-ep7a9vnyy5] {
+    display: flex;
+    flex-direction: column;
+}
+
+.kompInputCheckbox[b-ep7a9vnyy5] {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    line-height: 1.5;
+}
+
+button[b-ep7a9vnyy5] {
+    color: var(--color);
+    padding: 4px;
+    border-radius: 4px;
+    border: none;
+    background-color: transparent;
+    line-height: 0;
+    cursor: pointer;
+}
+
+    button:hover[b-ep7a9vnyy5] {
+        background-color: var(--hoverColor);
+    }
+
+    button:active[b-ep7a9vnyy5] {
+        background-color: var(--pressedColor);
+    }
+
+label[b-ep7a9vnyy5] {
+    cursor: pointer;
+}
+
+.helperText[b-ep7a9vnyy5] {
+    font-size: 70%;
+    color: var(--helperTextColor);
+    word-break: break-word;
+}
+/* _content/kaarkadiusz.Komponenty/Inputs/KAInputDate.razor.rz.scp.css */
+input[b-pulh71aov5]::-webkit-calendar-picker-indicator {
+    font-size: 120%;
+    filter: var(--webkit-calendar-picker-indicator-filter);
+    cursor: pointer;
+}
+/* _content/kaarkadiusz.Komponenty/Inputs/KAInputNumber.razor.rz.scp.css */
+input[b-dzrarow23g] {
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+}
+
+    input[b-dzrarow23g]::-webkit-inner-spin-button {
+        display: none;
+    }
+
+.spin-buttons[b-dzrarow23g] {
+    height: 100%;
+    max-height: 64px;
+    align-self: center;
+    display: grid;
+    grid-auto-rows: 1fr;
+    width: 2em;
+}
+
+.spin-button[b-dzrarow23g] {
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    color: var(--komponenty-base-12)
+}
+
+.spin-button:hover[b-dzrarow23g] {
+    background-color: var(--komponenty-base-a4);
+}
+/* _content/kaarkadiusz.Komponenty/Inputs/KAInputRadio.razor.rz.scp.css */
+.kompInputRadio[b-jt22j1wwhk] {
+    --color: var(--komponenty-base-12, currentColor);
+    --helperTextColor: var(--komponenty-base-11);
+    --hoverColor: color-mix(in srgb, var(--color) 15%, transparent);
+    --pressedColor: color-mix(in srgb, var(--color) 30%, transparent);
+}
+
+    .kompInputRadio.color-Primary[b-jt22j1wwhk] {
+        --color: var(--komponenty-primary-light);
+    }
+
+    .kompInputRadio.color-Secondary[b-jt22j1wwhk] {
+        --color: var(--komponenty-secondary-light);
+    }
+
+    .kompInputRadio.color-Info[b-jt22j1wwhk] {
+        --color: var(--komponenty-info-light);
+    }
+
+    .kompInputRadio.color-Success[b-jt22j1wwhk] {
+        --color: var(--komponenty-success-light);
+    }
+
+    .kompInputRadio.color-Warning[b-jt22j1wwhk] {
+        --color: var(--komponenty-warning-light);
+    }
+
+    .kompInputRadio.color-Danger[b-jt22j1wwhk] {
+        --color: var(--komponenty-danger-light);
+    }
+
+.kompInputRadio[b-jt22j1wwhk] {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    line-height: 1.5;
+}
+
+button[b-jt22j1wwhk] {
+    color: var(--color);
+    padding: 4px;
+    border-radius: 100px;
+    border: none;
+    background-color: transparent;
+    line-height: 0;
+    cursor: pointer;
+}
+
+    button:hover[b-jt22j1wwhk] {
+        background-color: var(--hoverColor);
+    }
+
+    button:active[b-jt22j1wwhk] {
+        background-color: var(--pressedColor);
+    }
+
+label[b-jt22j1wwhk] {
+    cursor: pointer;
+    display: inline-block;
+}
+/* _content/kaarkadiusz.Komponenty/Inputs/KAInputRadioGroup.razor.rz.scp.css */
+.kompInputRadioGroupWrap[b-toneh7n9cw] {
+    --helperTextColor: var(--komponenty-base-11);
+    --flexDirection: row;
+}
+
+    .kompInputRadioGroupWrap.validation-Success[b-toneh7n9cw] {
+        --helperTextColor: var(--komponenty-success);
+    }
+
+    .kompInputRadioGroupWrap.validation-Warning[b-toneh7n9cw] {
+        --helperTextColor: var(--komponenty-warning);
+    }
+
+    .kompInputRadioGroupWrap.validation-Error[b-toneh7n9cw] {
+        --helperTextColor: var(--komponenty-danger);
+    }
+
+    .kompInputRadioGroupWrap.direction-Row[b-toneh7n9cw] {
+        --flexDirection: row;
+    }
+
+    .kompInputRadioGroupWrap.direction-Column[b-toneh7n9cw] {
+        --flexDirection: column;
+    }
+
+.kompInputRadioGroupWrap[b-toneh7n9cw] {
+    display: flex;
+    flex-direction: column;
+}
+
+.kompInputRadioGroup[b-toneh7n9cw] {
+    display: flex;
+    flex-direction: var(--flexDirection);
+}
+
+.helperText[b-toneh7n9cw] {
+    font-size: 70%;
+    color: var(--helperTextColor);
+    word-break: break-word;
+}
+/* _content/kaarkadiusz.Komponenty/Inputs/KAInputSelectOption.razor.rz.scp.css */
+option[b-iq53mrfuzx] {
+    background-color: var(--komponenty-base-1);
+    color: var(--komponenty-base-12)
+}
+/* _content/kaarkadiusz.Komponenty/Inputs/KAInputTextArea.razor.rz.scp.css */
+.textareafake[b-4osfi7zpl9] {
+    position: fixed;
+    visibility: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    height: auto;
+    top: 0;
+    left: -9999px;
+}

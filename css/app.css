@@ -1,0 +1,247 @@
+/*
+    accent: 34E68A
+    gray: 8B8D98
+    background: FAFAFA
+*/
+
+:root, .light, .light-theme {
+    --accent-1: #f5f9f6;
+    --accent-2: #eef6f0;
+    --accent-3: #d9f4e0;
+    --accent-4: #c3efd1;
+    --accent-5: #ade7bf;
+    --accent-6: #93dcac;
+    --accent-7: #71cc93;
+    --accent-8: #30b970;
+    --accent-9: #00cc72;
+    --accent-10: #00c165;
+    --accent-11: #007d3f;
+    --accent-12: #174228;
+    --accent-a1: #26d05006;
+    --accent-a2: #0fac360d;
+    --accent-a3: #03cd3722;
+    --accent-a4: #04c94339;
+    --accent-a5: #01bc3b4f;
+    --accent-a6: #03b23f6a;
+    --accent-a7: #00a63e8c;
+    --accent-a8: #01aa50cf;
+    --accent-a9: #00cc72;
+    --accent-a10: #00c165;
+    --accent-a11: #007d3f;
+    --accent-a12: #002f13e8;
+    --accent-contrast: #fff;
+    --accent-surface: #ebf5eecc;
+    --accent-indicator: #00cc72;
+    --accent-track: #00cc72;
+}
+
+:root, .light, .light-theme {
+    --base-1: #f6f7f8;
+    --base-2: #f3f3f5;
+    --base-3: #e9eaed;
+    --base-4: #e1e1e6;
+    --base-5: #d9dae0;
+    --base-6: #d1d2d9;
+    --base-7: #c5c7cf;
+    --base-8: #b1b3bf;
+    --base-9: #848691;
+    --base-10: #797b86;
+    --base-11: #5b5d65;
+    --base-12: #1e1f24;
+    --base-a1: #2f629505;
+    --base-a2: #1b1b5b08;
+    --base-a3: #0a184212;
+    --base-a4: #0404351a;
+    --base-a5: #030a3722;
+    --base-a6: #0208322a;
+    --base-a7: #050e3337;
+    --base-a8: #0209324b;
+    --base-a9: #02061d79;
+    --base-a10: #00041a84;
+    --base-a11: #020511a3;
+    --base-a12: #010208e1;
+    --base-contrast: #FFFFFF;
+    --base-surface: #ffffffcc;
+    --base-indicator: #848691;
+    --base-track: #848691;
+}
+
+/*
+    accent: 34E68A
+    gray: 8B8D98
+    background: 1A1A1A
+*/
+
+.dark, .dark-theme {
+    --accent-1: #151c17;
+    --accent-2: #18211a;
+    --accent-3: #183221;
+    --accent-4: #143f26;
+    --accent-5: #184c2e;
+    --accent-6: #1e5a37;
+    --accent-7: #256a42;
+    --accent-8: #297e4e;
+    --accent-9: #34e68a;
+    --accent-10: #1ddb80;
+    --accent-11: #18d97e;
+    --accent-12: #adf3c4;
+    --accent-a1: #00c40003;
+    --accent-a2: #00fa1b08;
+    --accent-a3: #08fd5d1b;
+    --accent-a4: #00fb632a;
+    --accent-a5: #11fe7638;
+    --accent-a6: #28fd8148;
+    --accent-a7: #3afd8c5a;
+    --accent-a8: #3cfd9070;
+    --accent-a9: #37fe97e4;
+    --accent-a10: #1eff93d7;
+    --accent-a11: #18ff92d5;
+    --accent-a12: #b5ffcef2;
+    --accent-contrast: #102719;
+    --accent-surface: #17281a80;
+    --accent-indicator: #34e68a;
+    --accent-track: #34e68a;
+}
+
+.dark, .dark-theme {
+    --base-1: #191a1c;
+    --base-2: #202123;
+    --base-3: #29292c;
+    --base-4: #2e2f33;
+    --base-5: #34353a;
+    --base-6: #3c3d43;
+    --base-7: #484951;
+    --base-8: #5f616b;
+    --base-9: #6d6e79;
+    --base-10: #7a7b86;
+    --base-11: #b2b3bd;
+    --base-12: #eeeef0;
+    --base-a1: #001ac403;
+    --base-a2: #a6bdeb0b;
+    --base-a3: #d1d1f515;
+    --base-a4: #d1dafe1c;
+    --base-a5: #d3dafd24;
+    --base-a6: #d7ddfe2e;
+    --base-a7: #d7dcfc3e;
+    --base-a8: #dbe1fd5b;
+    --base-a9: #e2e5ff6a;
+    --base-a10: #e4e6fd79;
+    --base-a11: #eff1ffb6;
+    --base-a12: #fcfcfeef;
+    --base-contrast: #FFFFFF;
+    --base-surface: rgba(0, 0, 0, 0.05);
+    --base-indicator: #6d6e79;
+    --base-track: #6d6e79;
+}
+
+html, body {
+    font-family: var(--font-family);
+    box-sizing: border-box;
+    margin: 0;
+    background-color: var(--base-1);
+    color: var(--base-12);
+}
+
+h1:focus {
+    outline: none;
+}
+
+a, .btn-link {
+    color: #0071c1;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.content {
+    padding-top: 1.1rem;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    color-scheme: light only;
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
+
+.blazor-error-boundary {
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTYiIGhlaWdodD0iNDkiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIG92ZXJmbG93PSJoaWRkZW4iPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHg9IjIzNSIgeT0iNTEiIHdpZHRoPSI1NiIgaGVpZ2h0PSI0OSIvPjwvY2xpcFBhdGg+PC9kZWZzPjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMCkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMzUgLTUxKSI+PHBhdGggZD0iTTI2My41MDYgNTFDMjY0LjcxNyA1MSAyNjUuODEzIDUxLjQ4MzcgMjY2LjYwNiA1Mi4yNjU4TDI2Ny4wNTIgNTIuNzk4NyAyNjcuNTM5IDUzLjYyODMgMjkwLjE4NSA5Mi4xODMxIDI5MC41NDUgOTIuNzk1IDI5MC42NTYgOTIuOTk2QzI5MC44NzcgOTMuNTEzIDI5MSA5NC4wODE1IDI5MSA5NC42NzgyIDI5MSA5Ny4wNjUxIDI4OS4wMzggOTkgMjg2LjYxNyA5OUwyNDAuMzgzIDk5QzIzNy45NjMgOTkgMjM2IDk3LjA2NTEgMjM2IDk0LjY3ODIgMjM2IDk0LjM3OTkgMjM2LjAzMSA5NC4wODg2IDIzNi4wODkgOTMuODA3MkwyMzYuMzM4IDkzLjAxNjIgMjM2Ljg1OCA5Mi4xMzE0IDI1OS40NzMgNTMuNjI5NCAyNTkuOTYxIDUyLjc5ODUgMjYwLjQwNyA1Mi4yNjU4QzI2MS4yIDUxLjQ4MzcgMjYyLjI5NiA1MSAyNjMuNTA2IDUxWk0yNjMuNTg2IDY2LjAxODNDMjYwLjczNyA2Ni4wMTgzIDI1OS4zMTMgNjcuMTI0NSAyNTkuMzEzIDY5LjMzNyAyNTkuMzEzIDY5LjYxMDIgMjU5LjMzMiA2OS44NjA4IDI1OS4zNzEgNzAuMDg4N0wyNjEuNzk1IDg0LjAxNjEgMjY1LjM4IDg0LjAxNjEgMjY3LjgyMSA2OS43NDc1QzI2Ny44NiA2OS43MzA5IDI2Ny44NzkgNjkuNTg3NyAyNjcuODc5IDY5LjMxNzkgMjY3Ljg3OSA2Ny4xMTgyIDI2Ni40NDggNjYuMDE4MyAyNjMuNTg2IDY2LjAxODNaTTI2My41NzYgODYuMDU0N0MyNjEuMDQ5IDg2LjA1NDcgMjU5Ljc4NiA4Ny4zMDA1IDI1OS43ODYgODkuNzkyMSAyNTkuNzg2IDkyLjI4MzcgMjYxLjA0OSA5My41Mjk1IDI2My41NzYgOTMuNTI5NSAyNjYuMTE2IDkzLjUyOTUgMjY3LjM4NyA5Mi4yODM3IDI2Ny4zODcgODkuNzkyMSAyNjcuMzg3IDg3LjMwMDUgMjY2LjExNiA4Ni4wNTQ3IDI2My41NzYgODYuMDU0N1oiIGZpbGw9IiNGRkU1MDAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvZz48L3N2Zz4=) no-repeat 1rem/1.8rem, #b32121;
+    padding: 1rem 1rem 1rem 3.7rem;
+    color: white;
+}
+
+    .blazor-error-boundary::after {
+        content: "An error has occurred."
+    }
+
+.loading-progress {
+    position: absolute;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    inset: 20vh 0 auto 0;
+    margin: 0 auto 0 auto;
+}
+
+    .loading-progress circle {
+        fill: none;
+        stroke: #e0e0e0;
+        stroke-width: 0.6rem;
+        transform-origin: 50% 50%;
+        transform: rotate(-90deg);
+    }
+
+        .loading-progress circle:last-child {
+            stroke: #1b6ec2;
+            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+            transition: stroke-dasharray 0.05s ease-in-out;
+        }
+
+.loading-progress-text {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+}
+
+    .loading-progress-text:after {
+        content: var(--blazor-load-percentage-text, "Loading");
+    }
+
+code {
+    color: #c02d76;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
