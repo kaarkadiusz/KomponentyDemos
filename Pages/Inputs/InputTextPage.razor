@@ -10,7 +10,7 @@
 
         <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
         <SimplePageParagraph>
-            @Resources.BasicExampleDescription
+            @Resources.IntroDescription
         </SimplePageParagraph>
         <Piaskownica.Components.DemoBlock.DemoBlock T="InputTextBasicDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter" />
 
@@ -38,21 +38,21 @@
 @code {
     private static class Resources
     {
-        public static RenderFragment BasicExampleDescription => CurrentLocalization switch
+        public static RenderFragment IntroDescription => CurrentLocalization switch
         {
-            LocalizationVariant.PL => @<span>Komponent <span class="component">KAInputText</span> naśladuje zachowanie standardowego komponentu <span class="component">InputText</span> platformy Blazor.</span>,
-        _ or LocalizationVariant.EN => @<span>The <span class="component">KAInputText</span> component mimics the behavior of a standard Blazor's <span class="component">InputText</span> component.</span>,
+            LocalizationVariant.PL => @<span>Komponent <span class="component">@nameof(KAInputText)</span> naśladuje zachowanie standardowego komponentu <span class="component">@nameof(KAInputText)</span> platformy Blazor.</span>,
+        _ or LocalizationVariant.EN => @<span>The <span class="component">@nameof(KAInputText)</span> component mimics the behavior of a standard Blazor's <span class="component">@nameof(KAInputText)</span> component.</span>,
     };
         public static string MaxLengthTitle => nameof(KAInputText.MaxLength);
         public static RenderFragment MaxLengthDescription => CurrentLocalization switch
         {
             LocalizationVariant.PL =>
             @<span>
-    Parametr <span class="parameter">MaxLength</span> określa maksymalną liczbę znaków, jaką użytkownik może wprowadzić w polu.
+    Parametr <span class="parameter">@nameof(KAInputText.MaxLength)</span> określa maksymalną liczbę znaków, jaką użytkownik może wprowadzić w polu.
     Parametr ten określa jedynie atrybut <span class="attribute">maxlength</span> i choć w większości przypadków jest to wystarczające, wszelkie operacje sprawdzania poprawności oparte na długości wprowadzonych danych powinny być wykonywane oddzielnie.
 </span>,
         _ or LocalizationVariant.EN => @<span>
-    The <span class="parameter">MaxLength</span> parameter sets the maximum number of characters that user may input into the field.
+    The <span class="parameter">@nameof(KAInputText.MaxLength)</span> parameter sets the maximum number of characters that user may input into the field.
     This parameter only sets the <span class="attribute">maxlength</span> attribute and while most of the time this is sufficient, any validation logic based on input's length should be done separately.
 </span>,
         };

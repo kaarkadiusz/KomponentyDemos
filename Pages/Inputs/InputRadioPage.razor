@@ -1,22 +1,105 @@
 ﻿@using Komponenty.Inputs
 @using Piaskownica.Components.SimplePage
 @using Piaskownica.Demos.Inputs.InputRadio
+@using static Piaskownica.Classes.LocalizationBase
 
 <SimplePage>
     <SimplePageArticle>
 
         <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
         <SimplePageParagraph>
-            @* @Resources.BasicExampleDescription *@
+            @Resources.IntroDescription
         </SimplePageParagraph>
         <Piaskownica.Components.DemoBlock.DemoBlock T="InputRadioBasicDemo" />
 
         <SimplePageArticleHeading Level="2" Text=@BasicResources.CommonParameters />
         <CommonParametersParagraph ComponentType="typeof(KAInputRadioGroup<string>)" />
 
+        <SimplePageArticleHeading Level="2" Text=@Resources.InputRadioComponentsTitle />
+        <SimplePageParagraph>
+            @Resources.InputRadioComponentsDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.DirectionTitle />
+        <SimplePageParagraph>
+            @Resources.DirectionDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputRadioDirectionDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ColorTitle />
+        <SimplePageParagraph>
+            @Resources.ColorDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputRadioColorDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAInputRadioGroup<string>)@("<string>")</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAInputRadioGroup<string>" />
+
+        <SimplePageParagraph>
+        <span class="component">@nameof(KAInputRadio<string>)@("<string>")</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAInputRadio<string>" />
+
     </SimplePageArticle>
 </SimplePage>
 
 @code {
+    private static class Resources
+    {
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Komponenty <span class="component">@nameof(KAInputRadio<>)</span> i <span class="component">@nameof(KAInputRadioGroup<>)</span> naśladują zachowanie standardowych komponentów <span class="component">@nameof(InputRadio<>)</span> i <span class="component">@nameof(InputRadioGroup<>)</span> platformy Blazor.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="component">@nameof(KAInputRadio<>)</span> and <span class="component">@nameof(KAInputRadioGroup<>)</span> components mimic the behavior of a standard Blazor's <span class="component">@nameof(InputRadio<>)</span> and <span class="component">@nameof(InputRadioGroup<>)</span> components.</span>
+        };
 
+        public static string InputRadioComponentsTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => $"{nameof(KAInputRadioGroup<>)} i {nameof(KAInputRadio<>)}",
+            _ or LocalizationVariant.EN => $"{nameof(KAInputRadioGroup<>)} and {nameof(KAInputRadio<>)}",
+        };
+        public static RenderFragment InputRadioComponentsDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+    Komponent <span class="component">@nameof(KAInputRadio<>)</span> powinien być używany wyłącznie w ramach komponentu <span class="component">@nameof(KAInputRadioGroup<>)</span>, dlatego renderowanie go poza tym komponentem powoduje błąd wykonania. <br />
+    <span class="component">@nameof(KAInputRadioGroup<>)</span> jest głównym komponentem dziedziczącym po <span class="class">@nameof(KAInputBase<>)</span>, reprezentującym grupę przycisków opcji, natomiast komponent <span class="component">@nameof(KAInputRadio<>)</span> jest komponentem pomocniczym reprezentującym pojedynczy przycisk opcji.
+</span>,
+            _ or LocalizationVariant.EN => @<span>
+    The <span class="component">@nameof(KAInputRadio<>)</span> component should only ever be used within an <span class="component">@nameof(KAInputRadioGroup<>)</span> component and thus rendering it outside of it results in a runtime error. <br />
+    The <span class="component">@nameof(KAInputRadioGroup<>)</span> is the main component that inherits from <span class="class">@nameof(KAInputBase<>)</span>, representing a group of radio buttons, while the <span class="component">@nameof(KAInputRadio<>)</span> component is a helper component representing a single radio button.
+</span>
+        };
+
+        public static string DirectionTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => $"{nameof(KAInputRadioGroup<>.Direction)}",
+            _ or LocalizationVariant.EN => $"{nameof(KAInputRadioGroup<>.Direction)}",
+        };
+        public static RenderFragment DirectionDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+            Użyj parametru <span class="parameter">@nameof(KAInputRadioGroup<>.Direction)</span> (<span class="component">@nameof(KAInputRadioGroup<>)</span>), aby wybrać oś, na której rozmieszczone są przyciski opcji.
+</span>,
+            _ or LocalizationVariant.EN => @<span>
+    Use the <span class="parameter">@nameof(KAInputRadioGroup<>.Direction)</span> parameter (<span class="component">@nameof(KAInputRadioGroup<>)</span>) to select axis on which radio buttons are distributed.
+</span>
+        };
+
+        public static string ColorTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => $"{nameof(KAInputRadio<>.Color)}",
+            _ or LocalizationVariant.EN => $"{nameof(KAInputRadio<>.Color)}",
+        };
+        public static RenderFragment ColorDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+            Użyj parametru <span class="parameter">@nameof(KAInputRadio<>.Color)</span> parameter (<span class="component">@nameof(KAInputRadio<>)</span>), aby zmienić kolor pojedynczego przycisku opcji.
+</span>,
+            _ or LocalizationVariant.EN => @<span>
+    Use the <span class="parameter">@nameof(KAInputRadio<>.Color)</span> parameter (<span class="component">@nameof(KAInputRadio<>)</span>) to change color of a single radio button.
+</span>
+        };
+    }
 }

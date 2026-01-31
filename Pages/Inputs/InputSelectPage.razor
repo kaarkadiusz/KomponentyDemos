@@ -1,22 +1,63 @@
 ﻿@using Komponenty.Inputs
 @using Piaskownica.Components.SimplePage
 @using Piaskownica.Demos.Inputs.InputSelect
+@using static Piaskownica.Classes.LocalizationBase
 
 <SimplePage>
     <SimplePageArticle>
 
         <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
         <SimplePageParagraph>
-            @* @Resources.BasicExampleDescription *@
+            @Resources.IntroDescription
         </SimplePageParagraph>
         <Piaskownica.Components.DemoBlock.DemoBlock T="InputSelectBasicDemo" />
 
         <SimplePageArticleHeading Level="2" Text=@BasicResources.CommonParameters />
         <CommonParametersParagraph ComponentType="typeof(KAInputSelect<string>)" />
 
+        <SimplePageArticleHeading Level="2" Text=@Resources.InputSelectComponentsTitle />
+        <SimplePageParagraph>
+            @Resources.InputSelectComponentsDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAInputSelect<string>)@("<string>")</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAInputSelect<string>" />
+
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAInputSelectOption<string>)@("<string>")</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAInputSelectOption<string>" />
+
     </SimplePageArticle>
 </SimplePage>
 
 @code {
+    private static class Resources
+    {
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Komponent <span class="component">@nameof(KAInputSelect<>)</span> naśladuje zachowanie standardowego komponentu <span class="component">@nameof(InputSelect<>)</span> platformy Blazor.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="component">@nameof(KAInputSelect<>)</span> component mimics the behavior of a standard Blazor's <span class="component">@nameof(InputSelect<>)</span> component.</span>
+        };
 
+        public static string InputSelectComponentsTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => $"{nameof(KAInputSelect<>)} i {nameof(KAInputSelectOption<>)}",
+            _ or LocalizationVariant.EN => $"{nameof(KAInputSelect<>)} and {nameof(KAInputSelectOption<>)}",
+        };
+        public static RenderFragment InputSelectComponentsDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+    Komponent <span class="component">@nameof(KAInputSelectOption<>)</span> powinien być używany wyłącznie w ramach komponentu <span class="component">@nameof(KAInputSelect<>)</span>, dlatego renderowanie go poza tym komponentem powoduje błąd wykonania. <br />
+    <span class="component">@nameof(KAInputSelect<>)</span> jest głównym komponentem dziedziczącym po <span class="class">@nameof(KAInputBase<>)</span>, reprezentującym całość komponentu wyboru, natomiast komponent <span class="component">@nameof(KAInputSelectOption<>)</span> jest komponentem pomocniczym reprezentującym pojedynczą opcję wyboru.
+</span>,
+            _ or LocalizationVariant.EN => @<span>
+    The <span class="component">@nameof(KAInputSelectOption<>)</span> component should only ever be used within an <span class="component">@nameof(KAInputSelect<>)</span> component and thus rendering it outside of it results in a runtime error. <br />
+    The <span class="component">@nameof(KAInputSelect<>)</span> is the main component that inherits from <span class="class">@nameof(KAInputBase<>)</span>, representing an entirety of select compoennt, while the <span class="component">@nameof(KAInputSelectOption<>)</span> component is a helper component representing a single select option.
+</span>
+        };
+    }
 }

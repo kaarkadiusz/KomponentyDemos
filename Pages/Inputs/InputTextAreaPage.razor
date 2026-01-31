@@ -1,4 +1,5 @@
 ﻿@using Komponenty.Inputs
+@using Piaskownica.Classes
 @using Piaskownica.Components.SimplePage
 @using Piaskownica.Demos.Inputs.InputTextArea
 @using static Piaskownica.Classes.LocalizationBase
@@ -8,7 +9,7 @@
 
         <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
         <SimplePageParagraph>
-            @* @Resources.BasicExampleDescription *@
+            @Resources.IntroDescription
         </SimplePageParagraph>
         <Piaskownica.Components.DemoBlock.DemoBlock T="InputTextAreaBasicDemo" />
 
@@ -18,9 +19,116 @@
         <SimplePageArticleHeading Level="2" Text=@BasicResources.ValidTypes />
         <ValidTypesParagraph ComponentType="typeof(KAInputTextArea)" />
 
+        <SimplePageArticleHeading Level="1" Text=@Resources.RowsParametersTitle />
+        <SimplePageParagraph>
+            @Resources.RowsParametersDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="2" Text=@Resources.RowsTitle />
+        <SimplePageParagraph>
+            @Resources.RowsDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputTextAreaRowsDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@Resources.AllowGrowingTitle />
+        <SimplePageParagraph>
+            @Resources.AllowGrowingDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputTextAreaAllowGrowingDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@Resources.MaxRowsTitle />
+        <SimplePageParagraph>
+            @Resources.MaxRowsDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="InputTextAreaMaxRowsDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAInputTextArea)</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAInputTextArea" />
+
     </SimplePageArticle>
 </SimplePage>
 
 @code {
-    
+    private static class Resources
+    {
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Komponent <span class="component">@nameof(KAInputTextArea)</span> naśladuje zachowanie standardowego komponentu <span class="component">@nameof(KAInputTextArea)</span> platformy Blazor.</span>,
+        _ or LocalizationVariant.EN => @<span>The <span class="component">@nameof(KAInputTextArea)</span> component mimics the behavior of a standard Blazor's <span class="component">@nameof(KAInputTextArea)</span> component.</span>,
+        };
+
+        public static string MaxLengthTitle => nameof(KAInputTextArea.MaxLength);
+        public static RenderFragment MaxLengthDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+            @<span>
+    Parametr <span class="parameter">@nameof(KAInputTextArea.MaxLength)</span> określa maksymalną liczbę znaków, jaką użytkownik może wprowadzić w polu.
+    Parametr ten określa jedynie atrybut <span class="attribute">maxlength</span> i choć w większości przypadków jest to wystarczające, wszelkie operacje sprawdzania poprawności oparte na długości wprowadzonych danych powinny być wykonywane oddzielnie.
+</span>,
+        _ or LocalizationVariant.EN => @<span>
+    The <span class="parameter">@nameof(KAInputTextArea.MaxLength)</span> parameter sets the maximum number of characters that user may input into the field.
+    This parameter only sets the <span class="attribute">maxlength</span> attribute and while most of the time this is sufficient, any validation logic based on input's length should be done separately.
+</span>
+            ,
+        };
+
+        public static string RowsParametersTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Parametry wierszy",
+            _ or LocalizationVariant.EN => "Rows parameters"
+        };
+        public static RenderFragment RowsParametersDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+            @<span>
+    Parametry te kontrolują sposób zachowania wierszy komponentu @nameof(KAInputTextArea).
+</span>,
+        _ or LocalizationVariant.EN => @<span>
+    Those parameters control the way @nameof(KAInputTextArea)'s rows behave.
+</span>
+            ,
+        };
+
+        public static string RowsTitle => nameof(KAInputTextArea.Rows);
+        public static RenderFragment RowsDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+@<span>
+    Parametr <span class="parameter">@nameof(KAInputTextArea.Rows)</span> określa stałą liczbę wierszy tekstu wyświetlanych w polu tekstowym. 
+</span>                
+            ,
+            _ or LocalizationVariant.EN =>@<span>
+    <span class="parameter">@nameof(KAInputTextArea.Rows)</span> parameter sets a fixed amount of text lines that the textarea displays. 
+</span>
+        };
+
+        public static string AllowGrowingTitle => nameof(KAInputTextArea.AllowGrowing);
+        public static RenderFragment AllowGrowingDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+@<span>
+    Parametr <span class="parameter">@nameof(KAInputTextArea.AllowGrowing)</span> umożliwia automatyczne rozszerzenie pola tekstowego, gdy jego aktualny rozmiar nie mieści zawartości. Wykorzystuje on funkcję javascript.
+</span>                
+            ,
+            _ or LocalizationVariant.EN =>@<span>
+    <span class="parameter">@nameof(KAInputTextArea.AllowGrowing)</span> parameter enables textarea to automatically expand when the current textarea's size doesn't fit the content. It utilizes a javascript function.
+</span>
+        };
+
+        public static string MaxRowsTitle => nameof(KAInputTextArea.MaxRows);
+        public static RenderFragment MaxRowsDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL =>
+@<span>
+    Parametr <span class="parameter">@nameof(KAInputTextArea.MaxRows)</span> określa maksymalną liczbę wierszy, do której może się powiększyć obszar tekstowy, gdy parametr <span class="parameter">@nameof(KAInputTextArea.AllowGrowing)</span> ma wartość <code>true</code>.
+</span>                
+            ,
+            _ or LocalizationVariant.EN =>@<span>
+    <span class="parameter">@nameof(KAInputTextArea.MaxRows)</span> parameter sets the maximum amount of lines the textarea may grown when <span class="parameter">@nameof(KAInputTextArea.AllowGrowing)</span> parameter is set to <code>true</code>.
+</span>
+        };
+    }
 }

@@ -1,8 +1,8 @@
-﻿<KAInputRadioGroup @bind-Value="_value">
+﻿<KAInputRadioGroup @bind-Value="_value" Direction="RadioGroupDirection.Column">
     <KAInputRadio Value=@("InputRadio1")>InputRadio1</KAInputRadio>
     <KAInputRadio Value=@("InputRadio2")>InputRadio2</KAInputRadio>
     <KAInputRadio Value=@("InputRadio3")>InputRadio3</KAInputRadio>
-</KAInputRadioGroup> 
+</KAInputRadioGroup>
 
 @code {
     string _value = string.Empty;

@@ -39,9 +39,8 @@
         <SimplePageArticleHeading Level="1" Text=@BasicResources.Remarks />
         <SimplePageParagraph>
             <ul>
-                <li>
-                    @Resources.DefaultParametersRemark
-                </li>
+                <li>@Resources.DefaultParametersRemark</li>
+                <li>@Resources.MinMaxRemark</li>
             </ul>
         </SimplePageParagraph>
 
@@ -106,6 +105,17 @@
     If type parameter is set to a value type, the parameters <span class="parameter">@(nameof(KAInputNumber<>.Min))</span>, <span class="parameter">@(nameof(KAInputNumber<>.Max))</span> and <span class="parameter">@(nameof(KAInputNumber<>.Step))</span> are set to their default values (as seen in parameter table).
             This behavior is to be expected when working with generic classes in C# and restricting the type parameter wouldn't be correct because of excluding the nullable types. 
             Component ignores those parameters in a case where user hasn't explicitly set them.</span>
+        };
+        public static RenderFragment MinMaxRemark => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+    Parametry <span class="parameter">@(nameof(KAInputNumber<>.Min))</span> i <span class="parameter">@(nameof(KAInputNumber<>.Max))</span> nie wymuszają, aby wartość mieściła się w prawidłowym zakresie (użytkownik może ręcznie wprowadzić liczbę spoza prawidłowego zakresu). 
+    Jest to domyślne zachowanie dla pól numerycznych HTML.
+</span>,
+            _ or LocalizationVariant.EN => @<span>
+    The <span class="parameter">@(nameof(KAInputNumber<>.Min))</span> and <span class="parameter">@(nameof(KAInputNumber<>.Max))</span> parameters don't force the value to be in valid range (user may manually input a number outside the valid range). 
+    This is the default behavior for HTML's number inputs.
+</span>
         };
     }
 }
