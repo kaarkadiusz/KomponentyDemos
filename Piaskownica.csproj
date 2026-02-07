@@ -20,7 +20,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Komponenty\Komponenty.csproj" Condition="'$(UseLocalLibrary)' == 'true' AND Exists('..\Komponenty\Komponenty.csproj')" />
 
-		<PackageReference Include="kaarkadiusz.Komponenty" Version="0.1.1" Condition="'$(UseLocalLibrary)' != 'true' OR !Exists('..\Komponenty\Komponenty.csproj')" />
+		<PackageReference Include="kaarkadiusz.Komponenty" Version="0.1.2" Condition="'$(UseLocalLibrary)' != 'true' OR !Exists('..\Komponenty\Komponenty.csproj')" />
 	</ItemGroup>
 
 	<ItemGroup>

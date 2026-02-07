@@ -1,0 +1,18 @@
+﻿<KAToggle @bind-Value="_boolValue" />
+<span>@_boolValue</span>
+
+<KAToggle @bind-Value="_dayOfWeekValue" />
+<span>@_dayOfWeekValue</span>
+
+<KAToggle @bind-Value="_intValue" ValueTable="[0, 1, 2]">
+    <IconFragment>
+        <span>@context</span>
+    </IconFragment>
+</KAToggle>
+<span>@_intValue</span>
+
+@code {
+    bool _boolValue;
+    DayOfWeek _dayOfWeekValue;
+    int _intValue;
+}
