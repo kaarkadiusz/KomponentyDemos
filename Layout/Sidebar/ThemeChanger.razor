@@ -1,12 +1,8 @@
 ﻿@using Komponenty.Icons
+@using static Piaskownica.Services.ThemeAgent
 
 <div class="themechanger">
-    <button @onclick="() => ChangeTheme(Services.ThemeAgent.ThemeMode.Light)">
-        <Komponenty.Icons.KAIcon IconSrc="@Preset.Outline.Sun" Color="Color.Default" Size="IconSize.Large"/>
-    </button>
-    <button @onclick="() => ChangeTheme(Services.ThemeAgent.ThemeMode.Dark)">
-        <Komponenty.Icons.KAIcon IconSrc="@Preset.Fill.Moon" Color="Color.Default" Size="IconSize.Large"/>
-    </button>
+    <KAToggle T="ThemeMode" Value="Mode" ValueChanged="ChangeTheme" Color="Color.Default" IconFunc="IconFunc"  />
 </div>
 
 @code {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.JSInterop;
 using Piaskownica.Metadata;
+using static Piaskownica.Services.ThemeAgent;
 
 namespace Piaskownica.Services
 {
@@ -22,6 +23,16 @@ namespace Piaskownica.Services
                 themeMode = ThemeMode.Light;
             }
             await SetThemeUsingJs(themeMode);
+        }
+        public async Task<ThemeMode> GetModeAsync()
+        {
+            string? themeMode = await LocalStorage.GetValueAsync<string>(BrowserStorageKey.ThemeMode);
+            if(!string.IsNullOrEmpty(themeMode) && Enum.TryParse(themeMode, out ThemeMode result))
+            {
+                return result;
+            }
+
+            return ThemeMode.Light;
         }
         public async Task SetModeAsync(ThemeMode themeMode)
         {
