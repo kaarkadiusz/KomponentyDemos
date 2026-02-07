@@ -1,0 +1,14 @@
+﻿<KAInputText ValidateTask="Validate" @bind-Value="_value" />
+
+@code {
+    string _value = string.Empty;
+    Task<ValidationResult?> Validate()
+    {
+        if (!string.IsNullOrEmpty(_value) && _value.Length % 2 == 0)
+        {
+            ValidationResult result = new ValidationResult() { Message = "Value's length is divisible by two", Status = ValidationStatus.Error };
+            return Task.FromResult(result)!;
+        }
+        return Task.FromResult((ValidationResult?)null);
+    }
+}

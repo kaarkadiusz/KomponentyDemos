@@ -1,0 +1,119 @@
+﻿@using Komponenty.Inputs
+@using Piaskownica.Components.SimplePage
+@using static Piaskownica.Classes.LocalizationBase
+@attribute [Route(Metadata.Pages.Inputs.Validation)]
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.IntroTitle />
+        <SimplePageParagraph>
+            @Resources.IntroDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ValidateTaskTitle />
+        <SimplePageParagraph>
+            @Resources.ValidateTaskDescription
+        </SimplePageParagraph>
+        <SimplePageParagraph>
+            @Resources.ValidateTaskDemoDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.Validation.ValidationValidateTaskDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter"/>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ValidationBehaviorTitle />
+        <SimplePageParagraph>
+            @Resources.ValidationBehaviorDescription
+        </SimplePageParagraph>
+        <SimplePageParagraph>
+            @Resources.ValidationBehaviorDemoDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.Validation.ValidationValidationBehaviorDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter"/>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.DisableDataAnnotationsValidationTitle />
+        <SimplePageParagraph>
+            @Resources.DisableDataAnnotationsValidationDescription
+        </SimplePageParagraph>
+        <SimplePageParagraph>
+            @Resources.DisableDataAnnotationsValidationDemoDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.Validation.ValidationDisableDataAnnotationsValidationDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter"/>
+
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+    private static class Resources
+    {
+        public static string IntroTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Walidacja",
+            _ or LocalizationVariant.EN => "Validation"
+        };
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj zestawu parametrów walidacji, aby zweryfikować dane wejściowe i poinformować użytkownika o aktualnym stanie walidacji pola. Walidacja pola powoduje uzupełnienie właściwości @nameof(KAInputBase<>.RecentValidationResult) wynikiem walidacji, jeśli taki istnieje (jeśli nie ma, to <code>null</code>).</span>,
+            _ or LocalizationVariant.EN => @<span>Use the validation set of parameters to validate inputs and inform user about field's current validation state. Validating a field populates the @nameof(KAInputBase<>.RecentValidationResult) property with the validation result, if any (if none, then <code>null</code>).</span>
+        };
+
+        public static string ValidateTaskTitle => nameof(KAInputBase<>.ValidateTask);
+        public static RenderFragment ValidateTaskDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => 
+            @<span>Możesz użyć parametru <span class="parameter">@nameof(KAInputBase<>.ValidateTask)</span>, aby podać <span class="class">@nameof(Task)</span> służący do walidacji pola.
+    <span class="class">@nameof(Task)</span> musi zwrócić instancję niestandardowej klasy <span class="class">@nameof(ValidationResult)</span> lub wartość <code>null</code>.
+    Klasa <span class="class">@nameof(ValidationResult)</span> jest jedynie klasą pomocniczą zawierającą komunikat i status walidacji.
+    <strong>WAŻNE: Ta logika podlega zmianom i najprawdopodobniej zostanie zmieniona w przyszłości.</strong>
+</span>,
+            _ or LocalizationVariant.EN => @<span>
+    You may use <span class="parameter">@nameof(KAInputBase<>.ValidateTask)</span> parameter to provide a <span class="class">@nameof(Task)</span> used to validate field.
+    The <span class="class">@nameof(Task)</span> has to return an instance of <span class="class">@nameof(ValidationResult)</span> custom class or <code>null</code>.
+    This <span class="class">@nameof(ValidationResult)</span> class is just a helper class containing a message and a status of validation.
+    <strong>IMPORTANT: This logic is subject to and will most likely be changed in the future.</strong>
+</span>
+        };
+        public static RenderFragment ValidateTaskDemoDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>W poniższym przykładzie walidacja zakończy się niepowodzeniem, jeśli wartość nie jest pusta, a jej długość jest podzielna przez dwa. </span>,
+            _ or LocalizationVariant.EN => @<span>In the following example the validation will fail if the value is not empty and it's length is divisible by two. </span>
+        };
+
+        public static string ValidationBehaviorTitle => nameof(KAInputBase<>.ValidationBehavior);
+        public static RenderFragment ValidationBehaviorDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+    Możesz zmienić zachowanie walidacji za pomocą parametru <span class="parameter">@nameof(KAInputBase<>.ValidationBehavior)</span>
+    Domyślnie walidacja jest wykonywana za każdym razem, gdy zmienia się wartość (co w większości przypadków jest dodatkowo kontrolowane przez parametr <span class="parameter">@nameof(KAInputBase<>.ValueEvent)</span>).
+    Ustawienie <span class="parameter">@nameof(KAInputBase<>.ValidationBehavior)</span> na @nameof(ValidationBehavior.Manual) pozwala użytkownikowi wykonać walidację w wybranym przez siebie momencie.
+</span>,
+            _ or LocalizationVariant.EN => @<span>
+    You may change the behavior of validation with <span class="parameter">@nameof(KAInputBase<>.ValidationBehavior)</span> parameter.
+    By default the validation is performed each time the value changes (which, in most cases, is further controlled by <span class="parameter">@nameof(KAInputBase<>.ValueEvent)</span> parameter).
+    Setting the <span class="parameter">@nameof(KAInputBase<>.ValidationBehavior)</span> to @nameof(ValidationBehavior.Manual) allows user to perform the validation at the moment of their choosing.
+</span>
+        };
+        public static RenderFragment ValidationBehaviorDemoDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>W poniższym przykładzie parametr <span class="parameter">@nameof(KAInputBase<>.ValueEvent)</span> każdego pola wejściowego został ustawiony na @nameof(ValueEvent.OnInput), co powinno spowodować sprawdzenie poprawności danych wprowadzonych przez użytkownika w polu. Można to zmienić za pomocą parametru <span class="parameter">@nameof(KAInputBase<>.ValidationBehavior)</span>. </span>,
+            _ or LocalizationVariant.EN => @<span>In the following example every input's <span class="parameter">@nameof(KAInputBase<>.ValueEvent)</span> parameter has been set to @nameof(ValueEvent.OnInput) which should result in validation occurring on user inputting anything in the field. This is changed with <span class="parameter">@nameof(KAInputBase<>.ValidationBehavior)</span> parameter. </span>
+        };
+
+        public static string DisableDataAnnotationsValidationTitle => "Data annotations";
+        public static RenderFragment DisableDataAnnotationsValidationDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+    Domyślnie, jeśli walidacja za pomocą parametru <span class="parameter">@nameof(KAInputBase<>.ValidateTask)</span> nie zwróci instancji <span class="class">@nameof(ValidationResult)</span>, komponent dodatkowo próbuje zweryfikować pole za pomocą standardowej kombinacji klasy <span class="class">@nameof(System.ComponentModel.DataAnnotations.Validator)</span> i adnotacji danych.
+    Można to wyłączyć, ustawiając parametr <span class="parameter">@nameof(KAInputBase<>.DisableDataAnnotationsValidation)</span>.
+</span>,
+            _ or LocalizationVariant.EN => @<span>
+    By default, if the validation through <span class="parameter">@nameof(KAInputBase<>.ValidateTask)</span> parameter doesn't yield a <span class="class">@nameof(ValidationResult)</span> instance, the component additionaly tries to validate the field with standard combination of <span class="class">@nameof(System.ComponentModel.DataAnnotations.Validator)</span> class and data annotations.
+    This can be disabled by setting <span class="parameter">@nameof(KAInputBase<>.ValidateTask)</span> parameter.
+</span>
+        };
+        public static RenderFragment DisableDataAnnotationsValidationDemoDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>W poniższym przykładzie walidacja zakończy się niepowodzeniem, jeśli długość wartości będzie większa niż pięć.</span>,
+            _ or LocalizationVariant.EN => @<span>In the following example, the validation will fail if the value's length is bigger than five.</span>
+        };
+    };
+}

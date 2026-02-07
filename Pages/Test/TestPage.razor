@@ -1,46 +1,18 @@
 ﻿@using Komponenty.Inputs
 @using Komponenty.Basic
+@using System.ComponentModel.DataAnnotations
 @attribute [Route(Metadata.Pages.Test)]
 
 <div style="height: 100%; display: grid; place-content: center;">
-    <KAToggle T="bool" @bind-Value="_value" />
-    <KAToggle T="Color" Size="KAToggleSize.Small" @bind-Value="_value2" ValueTable=colorValues ColorFunc="ColorFunc" IconFunc="IconFunc" />
-    <KAToggle T="Color" Size="KAToggleSize.Medium" @bind-Value="_value2" ValueTable=colorValues ColorFunc="ColorFunc" IconFunc="IconFunc" />
-    <KAToggle T="Color" Size="KAToggleSize.Large" @bind-Value="_value2" ValueTable=colorValues ColorFunc="ColorFunc" IconFunc="IconFunc" />
-    <KAToggle T="DayOfWeek" Size="KAToggleSize.Medium" @bind-Value="_value3" ValueTable=dayOfWeekValues Color="Color.Default" DisplayVertical>
-        <IconFragment>
-            <span>@context.ToString().First()</span>
-        </IconFragment>
-    </KAToggle>
-    <p>
-        Value: @_value <br />
-        Value2: @_value2
-    </p>
+    <KAInputText @bind-Value="_model.Test" />
 </div>
 
 @code {
-    bool _value = false;
-    Color _value2 = Color.Default;
-    DayOfWeek _value3 = DayOfWeek.Sunday;
+    Model _model = new();
 
-    Color[] colorValues = Enum.GetValues<Color>();
-    DayOfWeek[] dayOfWeekValues = Enum.GetValues<DayOfWeek>();
-    Color ColorFunc(Color val)
+    private class Model
     {
-        return val;
-    }
-    string IconFunc(Color val)
-    {
-        return val switch
-        {
-            Color.Default => Komponenty.Icons.Preset.Fill.HexagonNumber0,
-            Color.Primary => Komponenty.Icons.Preset.Fill.HexagonNumber1,
-            Color.Secondary => Komponenty.Icons.Preset.Fill.HexagonNumber2,
-            Color.Info => Komponenty.Icons.Preset.Fill.HexagonNumber3,
-            Color.Success => Komponenty.Icons.Preset.Fill.HexagonNumber4,
-            Color.Warning => Komponenty.Icons.Preset.Fill.HexagonNumber5,
-            Color.Danger => Komponenty.Icons.Preset.Fill.HexagonNumber6,
-            _ => Komponenty.Icons.Preset.Fill.HexagonNumber7
-        };
+        [MaxLength(5)]
+        public string Test { get; set; } = string.Empty;
     }
 }
