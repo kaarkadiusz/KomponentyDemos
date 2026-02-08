@@ -1,4 +1,4 @@
-@import '_content/kaarkadiusz.Komponenty/kaarkadiusz.Komponenty.7fd6a6gwbe.bundle.scp.css';
+@import '_content/kaarkadiusz.Komponenty/kaarkadiusz.Komponenty.7se4yygv2i.bundle.scp.css';
 
 /* /Components/DemoBlock/DemoBlock.razor.rz.scp.css */
 .demo[b-8w5uhzqzcv] {
@@ -207,6 +207,7 @@ p[b-iu02a0k49g] {
     --valueColor: color-mix(in srgb, #ffa400 70%, var(--base-12));
     --htmlTagColor: color-mix(in srgb, #0082ff 70%, var(--base-12));
     --classColor: color-mix(in srgb, var(--accent-12) 70%, var(--base-12));
+    --methodColor: color-mix(in srgb, #fcff00 70%, var(--base-12));
 }
 
 [b-iu02a0k49g] .parameter {
@@ -259,6 +260,12 @@ p[b-iu02a0k49g] {
     font-family: Consolas;
     font-weight: 300;
     color: var(--classColor);
+}
+
+[b-iu02a0k49g] .method {
+    font-family: Consolas;
+    font-weight: 300;
+    color: var(--methodColor);
 }
 /* /Demos/Inputs/Introduction/InputsTable.razor.rz.scp.css */
 :is(th, td)[b-apavgnnyuj] {
