@@ -1,0 +1,15 @@
+﻿<KAToggle ColorFunc="GetColor" @bind-Value="_value" ValueTable="_valueTable" />
+
+@code {
+    int _value;
+    int[] _valueTable = [.. Enum.GetValues<Color>().Select(color => (int)color)];
+
+    Color GetColor(int value)
+    {
+        if (Enum.IsDefined((Color)value))
+        {
+            return (Color)value;
+        }
+        return Color.Primary;
+    }
+}

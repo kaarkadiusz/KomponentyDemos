@@ -1,0 +1,184 @@
+﻿@using Komponenty.Basic
+@using Komponenty.Classes
+@using Komponenty.Icons
+@using Piaskownica.Classes
+@using Piaskownica.Components
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Button
+@using Piaskownica.Demos.Toggle
+@using static Piaskownica.Classes.LocalizationBase
+
+@inherits WasmComponentBase
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @Resources.IntroDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ToggleBasicDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ValueTableTitle />
+        <SimplePageParagraph>
+            @Resources.ValueTableDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ToggleValueTableDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridColumnCenter"/>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.SizeTitle />
+        <SimplePageParagraph>
+            @Resources.SizeDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ToggleSizeDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ColorParagraphTitle />
+        <SimplePageParagraph>
+            @Resources.ColorParagraphDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="2" Text=@Resources.ColorTitle />
+        <SimplePageParagraph>
+            @Resources.ColorDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ToggleColorDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@Resources.ColorFuncTitle />
+        <SimplePageParagraph>
+            @Resources.ColorFuncDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ToggleColorFuncDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.IconParagraphTitle />
+        <SimplePageParagraph>
+            @Resources.IconParagraphDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="2" Text=@Resources.IconFuncTitle />
+        <SimplePageParagraph>
+            @Resources.IconFuncDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ToggleIconFuncDemo" />
+
+        <SimplePageArticleHeading Level="2" Text=@Resources.IconFragmentTitle />
+        <SimplePageParagraph>
+            @Resources.IconFragmentDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ToggleIconFragmentDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.DisplayVerticalTitle />
+        <SimplePageParagraph>
+            @Resources.DisplayVerticalDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ToggleDisplayVerticalDemo" />
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAToggle<bool>)@("<bool>")</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAToggle<bool>" />
+
+    </SimplePageArticle>
+</SimplePage>
+
+@code {
+    private static class Resources
+    {
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj komponentu <span class="component">@nameof(KAToggle<>)</span>, aby wyrenderować konfigurowalny przełącznik.</span>,
+        _ or LocalizationVariant.EN => @<span>Use <span class="component">@nameof(KAToggle<>)</span> component to render a custiomisable toggle switch.</span>,
+        };
+
+        public static string ValueTableTitle => nameof(KAToggle<>.ValueTable);
+        public static RenderFragment ValueTableDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => 
+            @<span>Dostępne wartości są podawane za pomocą parametru <span class="parameter">@nameof(KAToggle<>.ValueTable)</span>. 
+    Jeśli nie podano wartości dla tego parametru, komponent próbuje użyć zamiast tego pewnych wartości podstawowych. 
+    Dla typu <code>bool</code> wartościami podstawowymi są <code>[false, true]</code>, a dla typu <span class="class">Enum</span> wartościami podstawowymi są wszystkie zdefiniowane wartości tego typu <span class="class">Enum</span>.
+</span>,
+        _ or LocalizationVariant.EN => 
+        @<span>The values available are provided through <span class="parameter">@nameof(KAToggle<>.ValueTable)</span> parameter. 
+        If there is no value provided for this parameter, the component tries to use some basic values instead. 
+    For a <code>bool</code> type the basic values are <code>[false, true]</code> and for an <span class="class">Enum</span> type the basic values are all defined values of this <span class="class">Enum</span> type.
+</span>
+            ,
+        };
+
+        public static string SizeTitle => nameof(KAToggle<>.Size);
+        public static RenderFragment SizeDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametru <span class="parameter">@nameof(KAToggle<>.Size)</span>, aby określić wysokość pojedynczej opcji, a tym samym rozmiar przełącznika.</span>,
+        _ or LocalizationVariant.EN => @<span>Use <span class="parameter">@nameof(KAToggle<>.Size)</span> parameter to define the height of a single option and thus the size of a toggle switch.</span>,
+        };
+
+        public static string ColorParagraphTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Kolory",
+        _ or LocalizationVariant.EN => "Colors",
+        };
+        public static RenderFragment ColorParagraphDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Możesz ustawić kolor przełącznika. Domyślnie kolor przełącznika zmienia się po wybraniu ostatniej dostępnej opcji (która w większości podstawowych przypadków jest drugą opcją o wartości true). </span>,
+        _ or LocalizationVariant.EN => @<span>You may set the color of a toggle switch. By default the toggle's color changes on selecting the last available option (which in most basic case is the second one with value true). </span>,
+        };
+
+        public static string ColorTitle => nameof(KAToggle<>.Color);
+        public static RenderFragment ColorDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+    Ustawiając parametr <span class="parameter">@nameof(KAToggle<>.Color)</span>, ustawiasz kolor tylko dla scenariusza, w którym wybrana jest ostatnia dostępna opcja. 
+    W większości przypadków (gdy przełącznik przekłada się na wybór między wartością <code>false</code> a wartością <code>true</code>) jest to wystarczające.
+    Jeśli jednak potrzebujesz bardziej szczegółowych ustawień, zapoznaj się z parametrem <span class="parameter">@nameof(KAToggle<>.ColorFunc)</span>.
+</span>,
+        _ or LocalizationVariant.EN => @<span>
+    By setting the <span class="parameter">@nameof(KAToggle<>.Color)</span> parameter, you only set the color for a scenario where the last available option is selected.
+    In most common cases (where the switch translates to a choice between value <code>false</code> and value <code>true</code>) this is sufficient. 
+    However if you need to be more specific then refer to <span class="parameter">@nameof(KAToggle<>.ColorFunc)</span> parameter.
+</span>,
+        };
+
+        public static string ColorFuncTitle => nameof(KAToggle<>.ColorFunc);
+        public static RenderFragment ColorFuncDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Parametr <span class="parameter">@nameof(KAToggle<>.ColorFunc)</span> umożliwia zdefiniowanie koloru dla każdej wartości z osobna.</span>,
+        _ or LocalizationVariant.EN => @<span><span class="parameter">@nameof(KAToggle<>.ColorFunc)</span> parameter allows defining a color for each individual value.</span>,
+        };
+
+        public static string IconParagraphTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Ikony",
+            _ or LocalizationVariant.EN => "Icons",
+        };
+        public static RenderFragment IconParagraphDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Możesz ustawić ikonę dla każdej wartości. Jest to szczególnie przydatne, gdy chcesz odejść od najczęściej spotykanego przełącznika dwustopniowego lub po prostu w prosty i przejrzysty sposób przedstawić, co oznaczają poszczególne wartości przełącznika.</span>,
+        _ or LocalizationVariant.EN => @<span>You may set an icon for each individual value. This is particularly useful when you wish to deviate the switch toggle from the most common two-value case or simply give a small and clear representation for what the switch values stand for.</span>,
+        };
+
+        public static string IconFuncTitle => nameof(KAToggle<>.IconFunc);
+        public static RenderFragment IconFuncDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>
+    Użyj parametru <span class="parameter">@nameof(KAToggle<>.IconFunc)</span>, aby podać wstępnie ustawioną ikonę. Wynik funkcji jest przekazywany do komponentu <span class="component">@nameof(KAIcon)</span>, dlatego obowiązują te same zasady.
+</span>,
+        _ or LocalizationVariant.EN => @<span>
+    Use the <span class="parameter">@nameof(KAToggle<>.IconFunc)</span> parameter to provide a preset icon. The function's result is forwarded to <span class="component">@nameof(KAIcon)</span> component and thus the same rules apply.
+</span>,
+        };
+
+        public static string IconFragmentTitle => nameof(KAToggle<>.IconFragment);
+        public static RenderFragment IconFragmentDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Parametr <span class="parameter">@nameof(KAToggle<>.ColorFunc)</span> umożliwia zdefiniowanie koloru dla każdej wartości z osobna.</span>,
+        _ or LocalizationVariant.EN => @<span>Alternatively you may use the <span class="parameter">@nameof(KAToggle<>.IconFragment)</span> parameter to provide a completely custom content. </span>,
+        };
+
+        public static string DisplayVerticalTitle => nameof(KAToggle<>.DisplayVertical);
+        public static RenderFragment DisplayVerticalDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Ustaw parametr <span class="parameter">@nameof(KAToggle<>.DisplayVertical)</span>, aby zmienić oś przełącznika na pionową.</span>,
+        _ or LocalizationVariant.EN => @<span>Set the <span class="parameter">@nameof(KAToggle<>.DisplayVertical)</span> parameter to change the toggle's axis to vertical.</span>,
+        };
+    }
+}

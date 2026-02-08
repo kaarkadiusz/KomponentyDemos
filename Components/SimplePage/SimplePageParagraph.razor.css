@@ -3,6 +3,7 @@
     --valueColor: color-mix(in srgb, #ffa400 70%, var(--base-12));
     --htmlTagColor: color-mix(in srgb, #0082ff 70%, var(--base-12));
     --classColor: color-mix(in srgb, var(--accent-12) 70%, var(--base-12));
+    --methodColor: color-mix(in srgb, #fcff00 70%, var(--base-12));
 }
 
 ::deep .parameter {
@@ -55,4 +56,10 @@
     font-family: Consolas;
     font-weight: 300;
     color: var(--classColor);
+}
+
+::deep .method {
+    font-family: Consolas;
+    font-weight: 300;
+    color: var(--methodColor);
 }

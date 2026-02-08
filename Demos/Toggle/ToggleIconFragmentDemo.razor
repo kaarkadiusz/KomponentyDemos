@@ -1,0 +1,11 @@
+﻿<KAToggle @bind-Value="_value" ValueTable="[0, 1, 2]" Color="Color.Default" Context="value">
+    <IconFragment>
+        <div style="font-weight: 600; font-style: italic; text-decoration: underline;">
+            <span>@value</span>
+        </div>
+    </IconFragment>
+</KAToggle>
+
+@code {
+    int _value;
+}

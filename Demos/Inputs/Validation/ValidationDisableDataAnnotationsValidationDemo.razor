@@ -1,0 +1,15 @@
+﻿<KAInputText DisableDataAnnotationsValidation
+             @bind-Value="_model.Value"
+             Label="Without validation"/>
+<KAInputText @bind-Value="_model.Value"
+             Label="With validation"/>
+
+@code {
+    Model _model = new();
+
+    class Model
+    {
+        [System.ComponentModel.DataAnnotations.MaxLength(5)]
+        public string Value = string.Empty;
+    }
+}

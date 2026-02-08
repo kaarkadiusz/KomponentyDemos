@@ -1,57 +1,18 @@
 ﻿@using Komponenty.Inputs
+@using Komponenty.Basic
+@using System.ComponentModel.DataAnnotations
 @attribute [Route(Metadata.Pages.Test)]
 
-@* <EditForm Model="@formData" OnSubmit="@HandleSubmit">
-    <InputText @bind-Value="formData.TextValue" />
-    <InputNumber @bind-Value="formData.NumberValue" />
-    <InputTextArea @bind-Value="formData.TextAreaValue" />
-    <InputRadioGroup Name="Radio" @bind-Value="formData.RadioValue">
-        <InputRadio Value=@("Radio1") Name="Radio" />
-        <InputRadio Value=@("Radio2") Name="Radio" />
-        <InputRadio Value=@("Radio3") Name="Radio" />
-    </InputRadioGroup>
-    <button type="submit">Submit</button>
-</EditForm> *@
-
-<EditForm Model="@formData" OnSubmit="@HandleSubmit">
-    <KAInputText @bind-Value="formData.TextValue" />
-    <KAInputNumber @bind-Value="formData.NumberValue" />
-    <KAInputTextArea @bind-Value="formData.TextAreaValue" />
-    <KAInputRadioGroup @bind-Value="formData.RadioValue">
-        <KAInputRadio Value=@("Radio1") />
-        <KAInputRadio Value=@("Radio2") />
-        <KAInputRadio Value=@("Radio3") />
-    </KAInputRadioGroup>
-    <KAInputCheckbox @bind-Value="formData.CheckboxValue" />
-    <button type="submit">Submit</button>
-</EditForm>
-
-<button @onclick="Test">Test</button>
+<div style="height: 100%; display: grid; place-content: center;">
+    <KAInputText @bind-Value="_model.Test" />
+</div>
 
 @code {
-    private MyFormModel formData = new();
+    Model _model = new();
 
-    public class MyFormModel
+    private class Model
     {
-        public string TextValue { get; set; }
-        public int NumberValue { get; set; }
-        public string TextAreaValue { get; set; }
-        public string RadioValue { get; set; }
-        public bool CheckboxValue { get; set; }
-    }
-    private void HandleSubmit(EditContext context)
-    {
-        var data = (MyFormModel)context.Model;
-
-        Console.WriteLine(data.TextValue);
-        Console.WriteLine(data.NumberValue);
-        Console.WriteLine(data.TextAreaValue);
-        Console.WriteLine(data.RadioValue);
-        Console.WriteLine(data.CheckboxValue);
-        ;
-    }
-    private void Test()
-    {
-        Console.WriteLine("Test");
+        [MaxLength(5)]
+        public string Test { get; set; } = string.Empty;
     }
 }

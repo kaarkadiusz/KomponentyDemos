@@ -17,6 +17,8 @@ namespace Piaskownica.Layout.Sidebar
             new CultureInfo("pl-PL"),
             ];
 
+        private CultureInfo? CurrentCulture => CultureInfo.DefaultThreadCurrentCulture;
+
         private async Task ChangeCulture(CultureInfo cultureInfo)
         {
             CultureInfo? currentCulture = CultureInfo.DefaultThreadCurrentCulture;
@@ -28,19 +30,5 @@ namespace Piaskownica.Layout.Sidebar
             await LocalStorage.SetValueAsync(BrowserStorageKey.Culture, cultureInfo.Name);
             NavigationManager.Refresh();
         }
-
-        private static string GetFlagEmoji(CultureInfo culture)
-        {
-            var region = new RegionInfo(culture.Name);
-            string countryCode = region.TwoLetterISORegionName.ToUpperInvariant();
-
-            const int regionalIndicatorBase = 0x1F1E6;
-
-            int first = regionalIndicatorBase + (countryCode[0] - 'A');
-            int second = regionalIndicatorBase + (countryCode[1] - 'A');
-
-            return char.ConvertFromUtf32(first) + char.ConvertFromUtf32(second);
-        }
-
     }
 }

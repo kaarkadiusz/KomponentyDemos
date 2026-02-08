@@ -1,0 +1,39 @@
+﻿<KAInputText ValidationBehavior="ValidationBehavior.OnValueChange"
+             Label="OnChange"
+             ValidateTask="Validate"
+             ValueEvent="ValueEvent.OnInput"
+             @bind-Value="_value" />
+<KAInputText ValidationBehavior="ValidationBehavior.OnValueChangeWithDebouncing"
+             Label="OnChangeDebounce"
+             ValidateTask="Validate"
+             ValueEvent="ValueEvent.OnInput"
+             @bind-Value="_value" />
+<KAInputText ValidationBehavior="ValidationBehavior.Manual"
+             Label="Manual"
+             @ref="inputText"
+             ValidateTask="Validate"
+             ValueEvent="ValueEvent.OnInput"
+             @bind-Value="_value" />
+<KAButton Text="Validate" OnClick="ValidateManually"/>
+
+@code {
+    string _value = string.Empty;
+    Task<ValidationResult?> Validate()
+    {
+        if (!string.IsNullOrEmpty(_value) && _value.Length % 2 == 0)
+        {
+            ValidationResult result = new ValidationResult() { Message = "Value's length is divisible by two", Status = ValidationStatus.Error };
+            return Task.FromResult(result)!;
+        }
+        return Task.FromResult((ValidationResult?)null);
+    }
+
+    KAInputText? inputText;
+    async Task ValidateManually()
+    {
+        if(inputText is not null)
+        {
+            await inputText.Validate();
+        }
+    }
+}

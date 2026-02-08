@@ -1,0 +1,15 @@
+﻿<KAToggle @bind-Value="_value" ValueTable="[0, 1, 2]" Color="Color.Default" IconFunc="GetIcon" /> 
+
+@code {
+    int _value; 
+    string GetIcon(int value)
+    {
+        return value switch
+        {
+            0 => Komponenty.Icons.Preset.Fill.HexagonNumber0,
+            1 => Komponenty.Icons.Preset.Fill.HexagonNumber1,
+            2 => Komponenty.Icons.Preset.Fill.HexagonNumber2,
+            _ => Komponenty.Icons.Preset.Outline.QuestionMark
+        };
+    }
+}
