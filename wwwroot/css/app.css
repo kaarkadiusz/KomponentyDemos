@@ -135,7 +135,7 @@
 }
 
 html, body {
-    font-family: var(--font-family);
+    font-family: var(--ka-fontFamily-base);
     box-sizing: border-box;
     margin: 0;
     background-color: var(--base-1);
