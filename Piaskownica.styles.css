@@ -1,4 +1,4 @@
-@import '_content/kaarkadiusz.Komponenty/kaarkadiusz.Komponenty.7se4yygv2i.bundle.scp.css';
+@import '_content/kaarkadiusz.Komponenty/kaarkadiusz.Komponenty.exk1uayl01.bundle.scp.css';
 
 /* /Components/DemoBlock/DemoBlock.razor.rz.scp.css */
 .demo[b-8w5uhzqzcv] {
@@ -25,6 +25,13 @@
     .demo.displaystyle-GridColumnCenter > .preview[b-8w5uhzqzcv] {
         display: grid;
         grid-template-columns: fit-content(250px);
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .demo.displaystyle-GridWideColumnCenter > .preview[b-8w5uhzqzcv] {
+        display: grid;
+        grid-template-columns: fit-content(450px);
         justify-content: center;
         gap: 4px;
     }
