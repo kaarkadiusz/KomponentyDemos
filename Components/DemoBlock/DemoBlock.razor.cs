@@ -54,6 +54,7 @@ namespace Piaskownica.Components.DemoBlock
     public enum DemoBlockDisplayStyle
     {
         FlexCenter = 0,
-        GridColumnCenter = 1
+        GridColumnCenter = 1,
+        GridWideColumnCenter = 2
     }
 }

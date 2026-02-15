@@ -26,6 +26,13 @@
         gap: 4px;
     }
 
+    .demo.displaystyle-GridWideColumnCenter > .preview {
+        display: grid;
+        grid-template-columns: fit-content(450px);
+        justify-content: center;
+        gap: 4px;
+    }
+
     .preview {
         padding: 2rem 1.25rem;
         position: relative;

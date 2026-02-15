@@ -1,0 +1,148 @@
+﻿@using Piaskownica.Classes
+@using Piaskownica.Components.SimplePage
+@using Piaskownica.Demos.Alert
+@using static Piaskownica.Classes.LocalizationBase
+@inherits WasmComponentBase
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @Resources.IntroDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="AlertBasicDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridWideColumnCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ChildContentTitle />
+        <SimplePageParagraph>
+            @Resources.ChildContentDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="AlertChildContentDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridWideColumnCenter" />
+        <SimplePageParagraph>
+            @Resources.ChildContentRemark
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.TitleFragmentTitle />
+        <SimplePageParagraph>
+            @Resources.TitleFragmentDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="AlertTitleFragmentDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridWideColumnCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.IconTitle />
+        <SimplePageParagraph>
+            @Resources.IconDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="AlertIconDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridWideColumnCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ColorTitle />
+        <SimplePageParagraph>
+            @Resources.ColorDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="AlertColorDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridWideColumnCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.VariantTitle />
+        <SimplePageParagraph>
+            @Resources.VariantDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="AlertVariantDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridWideColumnCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.DenseTitle />
+        <SimplePageParagraph>
+            @Resources.DenseDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="AlertDenseDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridWideColumnCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.OnClickTitle />
+        <SimplePageParagraph>
+            @Resources.OnClickDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="AlertOnClickDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridWideColumnCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.OnCloseTitle />
+        <SimplePageParagraph>
+            @Resources.OnCloseDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="AlertOnCloseDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.GridWideColumnCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAAlert)</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAAlert" />
+
+    </SimplePageArticle>
+</SimplePage>
+@code {
+    private static class Resources
+    {
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj komponentu <span class="component">@nameof(KAToggle<>)</span>, aby wyrenderować konfigurowalny przełącznik.</span>,
+        _ or LocalizationVariant.EN => @<span>Use <span class="component">@nameof(KAToggle<>)</span> component to render a custiomisable toggle switch.</span>,
+        };
+
+        public static string ChildContentTitle => nameof(KAAlert.ChildContent);
+        public static RenderFragment ChildContentDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametru <span class="parameter">@nameof(KAAlert.ChildContent)</span>, aby wyrenderować zawartość alertu. </span>,
+        _ or LocalizationVariant.EN =>@<span>Use <span class="parameter">@nameof(KAAlert.ChildContent)</span> parameter to render alert's content. </span>,
+
+        };
+        public static RenderFragment ChildContentRemark => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Alternatywnie można użyć parametru <span class="parameter">@nameof(KAAlert.ContentFragment)</span>, ponieważ jest to alias parametru <span class="parameter">@nameof(KAAlert.ChildContent)</span>.</span>,
+        _ or LocalizationVariant.EN =>@<span>Alternatively you may use the <span class="parameter">@nameof(KAAlert.ContentFragment)</span> parameter, as it is an alias for <span class="parameter">@nameof(KAAlert.ChildContent)</span> parameter.</span>,
+
+        };
+        public static string TitleFragmentTitle => nameof(KAAlert.TitleFragment);
+        public static RenderFragment TitleFragmentDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Oprócz treści alertu można dodać jego tytuł za pomocą parametru <span class="parameter">@nameof(KAAlert.TitleFragment)</span>.</span>,
+        _ or LocalizationVariant.EN =>@<span>Alongside the alert's content, you may insert alert's title through <span class="parameter">@nameof(KAAlert.TitleFragment)</span> parameter.</span>,
+
+        };
+        public static string IconTitle => nameof(KAAlert.Icon);
+        public static RenderFragment IconDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametru <span class="parameter">@nameof(KAAlert.Icon)</span>, aby wyświetlić ikonę opisującą alert.</span>,
+        _ or LocalizationVariant.EN =>@<span>Use <span class="parameter">@nameof(KAAlert.Icon)</span> parameter to render an icon describing the alert.</span>,
+
+        };
+        public static string ColorTitle => nameof(KAAlert.Color);
+        public static RenderFragment ColorDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametru <span class="parameter">@nameof(KAAlert.Color)</span>, aby zmienić kolor alertu.</span>,
+        _ or LocalizationVariant.EN =>@<span>Use <span class="parameter">@nameof(KAAlert.Color)</span> parameter to change color of the alert.</span>,
+
+        };
+        public static string VariantTitle => nameof(KAAlert.Variant);
+        public static RenderFragment VariantDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametru <span class="parameter">@nameof(KAAlert.Variant)</span>, aby wybrać wariant stylu alertu.</span>,
+        _ or LocalizationVariant.EN =>@<span>Use <span class="parameter">@nameof(KAAlert.Variant)</span> parameter to choose style variant of the alert.</span>,
+
+        };
+        public static string DenseTitle => nameof(KAAlert.Dense);
+        public static RenderFragment DenseDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj parametru <span class="parameter">@nameof(KAAlert.Dense)</span>, aby wyświetlić alert w bardziej kompaktowym stylu.</span>,
+        _ or LocalizationVariant.EN =>@<span>Use <span class="parameter">@nameof(KAAlert.Dense)</span> parameter to render the alert in a more compact style.</span>,
+
+        };
+        public static string OnClickTitle => nameof(KAAlert.OnClick);
+        public static RenderFragment OnClickDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Możesz ustawić parametr <span class="parameter">@nameof(KAAlert.OnClick)</span>, aby włączyć możliwość kliknięcia i otrzymać sygnał zwrotny za każdym razem, gdy użytkownik kliknie alert.</span>,
+        _ or LocalizationVariant.EN =>@<span>You may set <span class="parameter">@nameof(KAAlert.OnClick)</span> parameter to enable clickability and recieve a callback whenever user clicks the alert.</span>,
+
+        };
+        public static string OnCloseTitle => nameof(KAAlert.OnClose);
+        public static RenderFragment OnCloseDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Możesz ustawić parametr <span class="parameter">@nameof(KAAlert.OnClose)</span>, aby wyświetlić przycisk zamykania i otrzymać sygnał zwrotny za każdym razem, gdy użytkownik kliknie ten przycisk.</span>,
+        _ or LocalizationVariant.EN =>@<span>You may set <span class="parameter">@nameof(KAAlert.OnClose)</span> parameter to render a close button and recieve a callback whenever user clicks the button.</span>,
+
+        };
+
+    }
+}

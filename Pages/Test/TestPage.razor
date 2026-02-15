@@ -3,11 +3,50 @@
 @using System.ComponentModel.DataAnnotations
 @attribute [Route(Metadata.Pages.Test)]
 
-<div style="height: 100%; display: grid; place-content: center;">
-    <KAInputText @bind-Value="_model.Test" />
+<div style="height: 100%; gap:4px; display: grid; place-content: center; grid-template-columns: clamp(100px, 100%, 400px);">
+    <KAAlert Icon="@Komponenty.Icons.Preset.Fill.Gift" OnClick="() => { }">
+        Present
+    </KAAlert> 
+    <KAAlert Color="Color.Success" Icon="@Komponenty.Icons.Preset.Fill.Gift" Variant="KAAlertVariant.Filled" OnClose="() => { }">
+        <TitleFragment>
+            Present
+        </TitleFragment>
+        <ChildContent>
+            Click here to open your present.
+        </ChildContent>
+    </KAAlert>
+    <KAAlert Color="Color.Danger"
+             Icon="@Komponenty.Icons.Preset.Outline.GiftOff"
+             Variant="KAAlertVariant.Outlined"
+             OnClick=@(() => Test("OnClick"))
+             OnClose=@(() => Test("OnClose"))>
+        <TitleFragment>
+            Your present has been revoked.
+        </TitleFragment>
+    </KAAlert>
+    <KAAlert Color="Color.Warning" OnClose="() => {}">
+        Something went unexpectedly.
+    </KAAlert>
+    <KAAlert Color="Color.Success" Icon="@Komponenty.Icons.Preset.Fill.Gift" Variant="KAAlertVariant.Filled" OnClose="() => { }" Dense>
+        <TitleFragment>
+            Present
+        </TitleFragment>
+        <ChildContent>
+            Click here to open your present.
+        </ChildContent>
+    </KAAlert>
+    <KAAlert Color="Color.Warning" OnClose="() => { }" Dense>
+        Something went unexpectedly.
+    </KAAlert>
 </div>
 
 @code {
+    private Task Test(string message)
+    {
+        Console.WriteLine(message);
+        return Task.CompletedTask;
+    }
+
     Model _model = new();
 
     private class Model

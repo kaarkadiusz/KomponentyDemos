@@ -7,6 +7,7 @@ namespace Piaskownica.Metadata
     {
         private const string DocBase = "doc";
 
+        public const string Alert = $"{DocBase}/alert";
         public const string Button = $"{DocBase}/button";
         public const string Icon = $"{DocBase}/icon";
 
