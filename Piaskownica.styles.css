@@ -24,14 +24,14 @@
 
     .demo.displaystyle-GridColumnCenter > .preview[b-8w5uhzqzcv] {
         display: grid;
-        grid-template-columns: fit-content(250px);
+        grid-template-columns: minmax(100px, 250px);
         justify-content: center;
         gap: 4px;
     }
 
     .demo.displaystyle-GridWideColumnCenter > .preview[b-8w5uhzqzcv] {
         display: grid;
-        grid-template-columns: fit-content(450px);
+        grid-template-columns: minmax(100px, 450px);
         justify-content: center;
         gap: 4px;
     }
