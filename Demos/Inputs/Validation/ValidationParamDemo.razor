@@ -1,0 +1,72 @@
+﻿<EditForm @ref="_editForm" Model="_model">
+    <KAInputNumber @ref="_inputNumber" @bind-Value="_model.Integer" Label="Integer" Validation="new(ValidateInteger)" />
+
+    <DataAnnotationsValidator />
+</EditForm>
+
+@if (_inputNumber is not null)
+{
+    <p>
+        @if (_inputNumber.GetValidationErrors() is IEnumerable<string> validationErrors && validationErrors.Any())
+        {
+            <span>@nameof(ValidationMessageStore): </span>
+            <ul>
+                @foreach (string error in validationErrors)
+                {
+                    <li>@error</li>
+                }
+            </ul>
+        }
+        @if (_inputNumber.ValidationResults.Count > 0)
+        {
+            <span>@nameof(KAInputBase<>.ValidationResults): </span>
+            <ul>
+                @foreach (KAValidationResult validationResult in _inputNumber.ValidationResults)
+                {
+                    <li>@validationResult.Message</li>
+                }
+            </ul>
+        }
+    </p>
+}
+
+@code {
+    private class Model
+    {
+        [System.ComponentModel.DataAnnotations.Range(-100, 100)]
+        public int? Integer { get; set; }
+    }
+
+    private Model _model = new();
+    private EditForm? _editForm;
+    private KAInputNumber<int?>? _inputNumber;
+    private ValidationMessageStore? _validationMessageStore;
+
+    protected override Task OnInitializedAsync()
+    {
+        if (_editForm is not null && _editForm.EditContext is not null)
+        {
+            _validationMessageStore = new(_editForm.EditContext);
+        }
+        return base.OnInitializedAsync();
+    }
+
+    private IEnumerable<KAValidationResult> ValidateInteger(int? integer)
+    {
+        if (integer is not null)
+        {
+            if (integer % 2 == 0)
+            {
+                yield return new("Integer is divisible by 2", KAValidationStatus.Success);
+            }
+            if (integer % 3 == 0)
+            {
+                yield return new("Integer is divisible by 3", KAValidationStatus.Warning);
+            }
+            if (integer % 5 == 0)
+            {
+                yield return new("Integer is divisible by 5", KAValidationStatus.Error);
+            }
+        }
+    }
+}

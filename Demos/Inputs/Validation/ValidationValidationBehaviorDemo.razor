@@ -1,39 +1,39 @@
 ﻿<KAInputText ValidationBehavior="ValidationBehavior.OnValueChange"
              Label="OnChange"
-             ValidateTask="Validate"
+             Validation="new(Validate)"
              ValueEvent="ValueEvent.OnInput"
              @bind-Value="_value" />
 <KAInputText ValidationBehavior="ValidationBehavior.OnValueChangeWithDebouncing"
              Label="OnChangeDebounce"
-             ValidateTask="Validate"
+             Validation="new(Validate)"
              ValueEvent="ValueEvent.OnInput"
              @bind-Value="_value" />
 <KAInputText ValidationBehavior="ValidationBehavior.Manual"
              Label="Manual"
-             @ref="inputText"
-             ValidateTask="Validate"
+             @ref="_inputText"
+             Validation="new(Validate)"
              ValueEvent="ValueEvent.OnInput"
              @bind-Value="_value" />
 <KAButton Text="Validate" OnClick="ValidateManually"/>
 
 @code {
     string _value = string.Empty;
-    Task<ValidationResult?> Validate()
+    Task<KAValidationResult?> Validate(string? value)
     {
-        if (!string.IsNullOrEmpty(_value) && _value.Length % 2 == 0)
+        if (!string.IsNullOrEmpty(value) && value.Length % 2 == 0)
         {
-            ValidationResult result = new ValidationResult() { Message = "Value's length is divisible by two", Status = ValidationStatus.Error };
+            KAValidationResult result = new KAValidationResult() { Message = "Value's length is divisible by two", Status = KAValidationStatus.Error };
             return Task.FromResult(result)!;
         }
-        return Task.FromResult((ValidationResult?)null);
+        return Task.FromResult((KAValidationResult?)null);
     }
 
-    KAInputText? inputText;
+    KAInputText? _inputText;
     async Task ValidateManually()
     {
-        if(inputText is not null)
+        if(_inputText is not null)
         {
-            await inputText.Validate();
+            await _inputText.ValidateAsync();
         }
     }
 }

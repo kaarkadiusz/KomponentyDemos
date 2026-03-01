@@ -1,0 +1,66 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+<EditForm Model="_model" OnValidSubmit="ValidSubmit" OnInvalidSubmit="InvalidSubmit">
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+        <KAInputText Label="First name" @bind-Value="_model.FirstName" />
+        <KAInputText Label="Last name" @bind-Value="_model.LastName" Validation="new(ValidateLastName)" />
+        <KAInputText Label="Password" @bind-Value="_model.Password" type="password" Validation="new(ValidatePassword)" />
+        <KAInputText Label="Email address" @bind-Value="_model.Email" />
+
+        <p>
+            @_submitMessage
+        </p>
+
+        <KAButton Text="Submit" Color="Color.Success" type="submit" />
+
+        <ValidationSummary />
+    </div>
+
+    <DataAnnotationsValidator />
+</EditForm>
+
+@code {
+    private class Model
+    {
+        [Required, MinLength(2)]
+        public string FirstName { get; set; } = string.Empty;
+        [Required, MinLength(2)]
+        public string LastName { get; set; } = string.Empty;
+        [Required]
+        public string Password { get; set; } = string.Empty;
+        [Required, EmailAddress]
+        public string Email { get; set; } = string.Empty;
+    }
+
+    private Model _model = new();
+
+    private string? ValidateLastName(string? lastName)
+    {
+        if (lastName?.Any(c => !char.IsLetter(c)) ?? false)
+        {
+            return "Last name can consist only of letters";
+        }
+        return null;
+    }
+    private KAValidationResult ValidatePassword(string? password)
+    {
+        return password?.Length switch
+        {
+            > 8 => new KAValidationResult("This password's length is good", KAValidationStatus.Success),
+            > 5 => new KAValidationResult("This password could be longer", KAValidationStatus.Warning),
+            _ => new KAValidationResult("This password is too short!"),
+        };
+    }
+
+    private string _submitMessage = string.Empty;
+    private Task ValidSubmit()
+    {
+        _submitMessage = "The form was submitted successfully!";
+        return Task.CompletedTask;
+    }
+    private Task InvalidSubmit()
+    {
+        _submitMessage = "The form was submitted unsuccessfully.";
+        return Task.CompletedTask;
+    }
+}
