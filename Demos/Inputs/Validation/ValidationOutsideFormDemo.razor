@@ -1,0 +1,22 @@
+﻿<KAInputNumber Label="Integer" @bind-Value="_integer" Validation="new(ValidateInteger)"/>
+
+@code {
+    private int _integer;
+
+    private KAValidationResult? ValidateInteger(int integer)
+    {
+        if(integer < 0)
+        {
+            return new KAValidationResult("Integer has to be positive");
+        }
+        if(integer <= 10)
+        {
+            return new KAValidationResult("Integer should be greater", KAValidationStatus.Warning);
+        }
+        if(integer <= 100)
+        {
+            return null;
+        }
+        return new KAValidationResult("Integer is too big");
+    }
+}

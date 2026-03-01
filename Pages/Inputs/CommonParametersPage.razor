@@ -45,7 +45,7 @@
         </SimplePageParagraph>
         <Piaskownica.Components.DemoBlock.DemoBlock T="Demos.Inputs.CommonParameters.AdornmentTextAndAdornmentIconDemo" />
 
-        <SimplePageArticleHeading Level="1" Text="@nameof(KAInputBase<>.Type)" />
+        <SimplePageArticleHeading Level="1" Text="@nameof(KAInputBase<>.Variant)" />
         <SimplePageParagraph>
             @Resources.TypeDescription
         </SimplePageParagraph>
@@ -147,8 +147,8 @@
 
         public static RenderFragment TypeDescription => CurrentLocalization switch
         {
-            LocalizationVariant.PL => @<span>Parametr <span class="parameter">@nameof(KAInputBase<>.Type)</span> służy do przełączania między wariantami stylu wejścia.</span>,
-            _ or LocalizationVariant.EN => @<span>The <span class="parameter">@nameof(KAInputBase<>.Type)</span> parameter is used to switch between input's style variants.</span>,
+            LocalizationVariant.PL => @<span>Parametr <span class="parameter">@nameof(KAInputBase<>.Variant)</span> służy do przełączania między wariantami stylu wejścia.</span>,
+            _ or LocalizationVariant.EN => @<span>The <span class="parameter">@nameof(KAInputBase<>.Variant)</span> parameter is used to switch between input's style variants.</span>,
         };
 
         public static RenderFragment ValueEventDescription => CurrentLocalization switch

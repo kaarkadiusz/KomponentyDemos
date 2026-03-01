@@ -21,14 +21,14 @@
 
     .demo.displaystyle-GridColumnCenter > .preview {
         display: grid;
-        grid-template-columns: fit-content(250px);
+        grid-template-columns: minmax(100px, 250px);
         justify-content: center;
         gap: 4px;
     }
 
     .demo.displaystyle-GridWideColumnCenter > .preview {
         display: grid;
-        grid-template-columns: fit-content(450px);
+        grid-template-columns: minmax(100px, 450px);
         justify-content: center;
         gap: 4px;
     }
