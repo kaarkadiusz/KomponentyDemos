@@ -6,6 +6,7 @@
 
 <div style="height: 100%; gap:4px; display: grid; place-content: center; grid-template-columns: clamp(100px, 100%, 200px);">
     <KAButton Text="Open" OnClick="async () => await (modal1?.OpenAsync() ?? Task.CompletedTask)" />
+    <KAButton Text="OpenService" OnClick="OpenModalThroughService" />
     <div style="height: 300px; width: 300px; border: 1px solid red; overflow: auto;">
         <div style="height: 3000px;"></div>
     </div>
@@ -26,4 +27,15 @@
     private KAModalService ModalService { get; set; } = null!;
 
     KAModal? modal1, modal2;
+
+    private async Task OpenModalThroughService()
+    {
+        var modalReference = await ModalService.OpenAsync(typeof(TestComponent), new Dictionary<string, object>() { { nameof(TestComponent.Integer), 1 } });
+        await ModalService.OpenAsync(typeof(TestComponent), new Dictionary<string, object>() { { nameof(TestComponent.Integer), int.MaxValue } });
+        await Task.Delay(3000);
+        if(modalReference is not null)
+        {
+            await ModalService.CloseAsync(modalReference);
+        }
+    }
 }
