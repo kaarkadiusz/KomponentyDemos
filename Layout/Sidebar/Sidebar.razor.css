@@ -27,6 +27,7 @@
     flex-direction: column;
     gap: 4px;
     padding: 1rem 0.5rem;
+    overflow: auto;
 }
 
 .group {

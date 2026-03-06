@@ -8,6 +8,7 @@ using System.Globalization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
@@ -18,7 +19,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<LocalStorageService>();
 builder.Services.AddScoped<ThemeAgent>();
 
-builder.Services.AddKomponentyJavascript();
+builder.Services.AddKAServices();
 
 var host = builder.Build();
 
