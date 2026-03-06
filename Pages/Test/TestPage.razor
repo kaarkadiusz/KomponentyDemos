@@ -31,8 +31,9 @@
     private async Task OpenModalThroughService()
     {
         var modalReference = await ModalService.OpenAsync(typeof(TestComponent), new Dictionary<string, object>() { { nameof(TestComponent.Integer), 1 } });
+        await Task.Delay(1000);
         await ModalService.OpenAsync(typeof(TestComponent), new Dictionary<string, object>() { { nameof(TestComponent.Integer), int.MaxValue } });
-        await Task.Delay(3000);
+        await Task.Delay(2000);
         if(modalReference is not null)
         {
             await ModalService.CloseAsync(modalReference);
