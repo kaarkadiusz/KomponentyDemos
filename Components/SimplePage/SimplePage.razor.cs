@@ -15,6 +15,8 @@ namespace Piaskownica.Components.SimplePage
 
         public SimplePageContext Context { get; } = new();
 
+        private CancellationTokenSource CTS { get; set; } = new();
+
         protected override Task OnInitializedAsync()
         {
             Context.OnArticleAdded += RefreshUI;
@@ -24,7 +26,7 @@ namespace Piaskownica.Components.SimplePage
 
         private async Task ScrollToHeading(string elementId)
         {
-            await JavascriptService.ScrollToElement(elementId);
+            await JavascriptService.ScrollToElement(elementId, CTS.Token);
         }
 
         private async void RefreshUI()
@@ -34,6 +36,7 @@ namespace Piaskownica.Components.SimplePage
 
         public void Dispose()
         {
+            CTS.Cancel();
             Context.OnArticleAdded -= RefreshUI;
             Context.OnHeadingAdded -= RefreshUI;
             GC.SuppressFinalize(this);

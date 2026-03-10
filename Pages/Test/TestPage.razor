@@ -12,13 +12,20 @@
     </div>
 </div>
 
-<KAModal @ref="modal1">
-    <h3>To jest pierwszy modal</h3>
-    <KAButton Text="Otwórz drugi" OnClick="async () => await (modal2?.OpenAsync() ?? Task.CompletedTask)"  />
-    <KAModal @ref="modal2" >
-        <h3>To jest drugi modal</h3>
-        <KAButton Text="Zamknij pierwszy" OnClick="async () => await (modal1?.CloseAsync() ?? Task.CompletedTask)"  />
-    </KAModal>
+<KAModal @ref="modal1" Title="To jest pierwszy modal">
+    <ChildContent>
+        <p>Pierwszy modal</p>
+        <KAInputText />
+        <KAInputNumber T="int" />
+
+        <KAModal @ref="modal2">
+            <h3>To jest drugi modal</h3>
+            <KAButton Text="Zamknij pierwszy" OnClick="async () => await (modal1?.CloseAsync() ?? Task.CompletedTask)" />
+        </KAModal>
+    </ChildContent>
+    <FooterActions>
+        <KAButton Text="Otwórz drugi" OnClick="async () => await (modal2?.OpenAsync() ?? Task.CompletedTask)" />
+    </FooterActions>
 </KAModal>
 
 
@@ -34,7 +41,7 @@
         await Task.Delay(1000);
         await ModalService.OpenAsync(typeof(TestComponent), new Dictionary<string, object>() { { nameof(TestComponent.Integer), int.MaxValue } });
         await Task.Delay(2000);
-        if(modalReference is not null)
+        if (modalReference is not null)
         {
             await ModalService.CloseAsync(modalReference);
         }
