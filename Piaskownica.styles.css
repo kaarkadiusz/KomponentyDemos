@@ -1,4 +1,4 @@
-@import '_content/kaarkadiusz.Komponenty/kaarkadiusz.Komponenty.exk1uayl01.bundle.scp.css';
+@import '_content/kaarkadiusz.Komponenty/kaarkadiusz.Komponenty.lz662lgbp9.bundle.scp.css';
 
 /* /Components/DemoBlock/DemoBlock.razor.rz.scp.css */
 .demo[b-8w5uhzqzcv] {
@@ -481,6 +481,7 @@ nav[b-qpzvod28ei] {
     flex-direction: column;
     gap: 4px;
     padding: 1rem 0.5rem;
+    overflow: auto;
 }
 
 .group[b-qpzvod28ei] {
