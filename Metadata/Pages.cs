@@ -30,6 +30,7 @@ namespace Piaskownica.Metadata
             public const string InputTextArea= $"{Base}/inputtextarea";
         }
 
+        public const string Modal = "modal";
         public const string Toggle = "toggle";
 
         public const string Test = "test";

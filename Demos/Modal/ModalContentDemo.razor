@@ -1,0 +1,56 @@
+﻿@using Komponenty.Modal
+
+<KAButton Text="With Title" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_titleModal)" />
+<KAButton Text="With Actions" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_actionsModal)" />
+<KAButton Text="With HeaderFragment" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_headerFragmentModal)" />
+<KAButton Text="With FooterFragment" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_footerFragmentModal)" />
+
+<KAModal @ref="_titleModal" Title="This modal has title">
+    <p>It appears in header section.</p>
+</KAModal>
+
+<KAModal @ref="_actionsModal" Title="This modal has actions">
+    <Actions>
+        <KAButton Text="Close" Variant="ButtonVariant.TextOnly" OnClick="() => CloseModal(_actionsModal)" />
+    </Actions>
+    <ChildContent>
+        <p>Actions appear in footer section.</p>
+    </ChildContent>
+</KAModal>
+
+<KAModal @ref="_headerFragmentModal">
+    <HeaderFragment>
+        <strong><i>This modal has custom header</i></strong>
+    </HeaderFragment>
+    <ChildContent>
+        <p>It replaces header section.</p>
+    </ChildContent>
+</KAModal>
+
+<KAModal @ref="_footerFragmentModal" Title="This modal has custom footer">
+    <FooterFragment>
+        <KAButton Text="Close" Variant="ButtonVariant.TextOnly" OnClick="() => CloseModal(_actionsModal)" />
+    </FooterFragment>
+    <ChildContent>
+        <p>It replaces footer section.</p>
+    </ChildContent>
+</KAModal>
+
+@code {
+    KAModal? _titleModal, _actionsModal, _headerFragmentModal, _footerFragmentModal;
+
+    private async Task OpenModal(KAModal? modal)
+    {
+        if (modal is not null)
+        {
+            await modal.OpenAsync();
+        }
+    }
+    private async Task CloseModal(KAModal? modal)
+    {
+        if (modal is not null)
+        {
+            await modal.CloseAsync();
+        }
+    }
+}

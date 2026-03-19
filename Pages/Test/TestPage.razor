@@ -1,56 +1,49 @@
 ﻿@using Komponenty.Inputs
 @using Komponenty.Basic
 @using System.ComponentModel.DataAnnotations
+@using Komponenty.Modal
 @attribute [Route(Metadata.Pages.Test)]
 
 <div style="height: 100%; gap:4px; display: grid; place-content: center; grid-template-columns: clamp(100px, 100%, 200px);">
-    <EditForm @ref="editForm" Model="_model">
-        <KAInputText @ref="kAInputText1" Validation="new(Validate)" Label="String" @bind-Value="_model.String" />
-        <KAInputNumber Label="Integer" @bind-Value="_model.Integer" />
-
-        <p>
-            String: @_model.String
-        </p>
-        <DataAnnotationsValidator />
-    </EditForm>
-    <KAInputText @ref="kAInputText2"  Label="String" Validation="new(Validate)" @bind-Value="_model.String" />
-    <KAInputText Label="String" @bind-Value="_model.String" />
-    <KAButton Text="Validate" OnClick="Test" />
+    <KAButton Text="Open" OnClick="async () => await (modal1?.OpenAsync() ?? Task.CompletedTask)" />
+    <KAButton Text="OpenService" OnClick="OpenModalThroughService" />
+    <div style="height: 300px; width: 300px; border: 1px solid red; overflow: auto;">
+        <div style="height: 3000px;"></div>
+    </div>
 </div>
 
+<KAModal @ref="modal1" Title="To jest pierwszy modal">
+    <ChildContent>
+        <p>Pierwszy modal</p>
+        <KAInputText />
+        <KAInputNumber T="int" />
+
+        <KAModal @ref="modal2">
+            <h3>To jest drugi modal</h3>
+            <KAButton Text="Zamknij pierwszy" OnClick="async () => await (modal1?.CloseAsync() ?? Task.CompletedTask)" />
+        </KAModal>
+    </ChildContent>
+    <Actions>
+        <KAButton Text="Otwórz drugi" OnClick="async () => await (modal2?.OpenAsync() ?? Task.CompletedTask)" />
+    </Actions>
+</KAModal>
+
+
 @code {
-    private async Task Test()
-    {
-        Console.WriteLine(editForm?.EditContext?.Validate());
-    }
+    [Inject]
+    private KAModalService ModalService { get; set; } = null!;
 
-    KAValidationResult? Validate(string? val)
-    {
-        if (val?.Length > 8)
-        {
-            return new("Success", KAValidationStatus.Success);
-        }
-        if(val?.Length > 6)
-        {
-            return new("Warning", KAValidationStatus.Warning);
-        }
-        if(val?.Length > 4)
-        {
-            return new("Błąd");
-        }
-        return null;
-    }
+    KAModal? modal1, modal2;
 
-    KAInputText? kAInputText1;
-    KAInputText? kAInputText2;
-    EditForm? editForm;
-    Model _model = new();
-
-    private class Model
+    private async Task OpenModalThroughService()
     {
-        [MaxLength(10)]
-        public string String { get; set; } = string.Empty;
-        [Range(0, 10)]
-        public int Integer { get; set; } = 0;
+        var modalReference = await ModalService.OpenAsync(typeof(TestComponent), new Dictionary<string, object>() { { nameof(TestComponent.Integer), 1 } });
+        await Task.Delay(1000);
+        await ModalService.OpenAsync(typeof(TestComponent), new Dictionary<string, object>() { { nameof(TestComponent.Integer), int.MaxValue } });
+        await Task.Delay(2000);
+        if (modalReference is not null)
+        {
+            await ModalService.CloseAsync(modalReference);
+        }
     }
 }

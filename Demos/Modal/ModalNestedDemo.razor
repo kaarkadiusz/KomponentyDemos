@@ -1,0 +1,58 @@
+﻿@using Komponenty.Modal
+
+<KAButton Text="Open nested" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_modal1)" />
+<KAButton Text="Open neighbors" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_modal3)" />
+
+<KAModal @ref="_modal1" Title="Outer modal">
+    <ChildContent>
+        <p>This modal is an outer modal. It has a nested modal within. </p>
+        <KAModal @ref="_modal2" Title="Inner modal" Width="KAModalWidth.Small">
+            <ChildContent>
+                <p>This modal is nested in Outer modal. Closing the outer modal will cause this modal to close as well.</p>
+            </ChildContent>
+            <Actions>
+                <KAButton Text="Close outer" OnClick="() => CloseModal(_modal1)" />
+            </Actions>
+        </KAModal>
+    </ChildContent>
+    <Actions>
+        <KAButton Text="Open nested modal" OnClick="() => OpenModal(_modal2)" />
+    </Actions>
+</KAModal>
+
+<KAModal @ref="_modal3" Title="First modal">
+    <ChildContent>
+        <p>This modal has a second modal beside it. </p>
+    </ChildContent>
+    <Actions>
+        <KAButton Text="Open second modal" OnClick="() => OpenModal(_modal4)" />
+    </Actions>
+</KAModal>
+
+<KAModal @ref="_modal4" Title="Second modal" Width="KAModalWidth.Small">
+    <ChildContent>
+        <p>This modal is beside first modal. Closing the first modal will cause this modal to close as well.</p>
+    </ChildContent>
+    <Actions>
+        <KAButton Text="Close first modal" OnClick="() => CloseModal(_modal3)" />
+    </Actions>
+</KAModal>
+
+@code {
+    KAModal? _modal1, _modal2, _modal3, _modal4;
+
+    private async Task OpenModal(KAModal? modal)
+    {
+        if (modal is not null)
+        {
+            await modal.OpenAsync(); 
+        }
+    }
+    private async Task CloseModal(KAModal? modal)
+    {
+        if (modal is not null)
+        {
+            await modal.CloseAsync();
+        }
+    }
+}

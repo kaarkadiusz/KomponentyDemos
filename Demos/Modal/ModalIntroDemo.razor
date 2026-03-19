@@ -1,0 +1,18 @@
+﻿@using Komponenty.Modal
+<KAButton Text="Open modal" Variant="ButtonVariant.TextOnly" OnClick="OpenModal" />
+
+<KAModal @ref="_modal">
+    <h3>This is a modal</h3>
+    <p>It pops up on top of the app.</p>
+</KAModal>
+
+@code {
+    KAModal? _modal;
+    private async Task OpenModal()
+    {
+        if(_modal is not null)
+        {
+            await _modal.OpenAsync();
+        }
+    }
+}
