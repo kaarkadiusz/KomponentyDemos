@@ -134,6 +134,10 @@
     --base-track: #6d6e79;
 }
 
+:root {
+/*    --ka-hasModal-pageOverflow: hidden;*/
+}
+
 html, body {
     font-family: var(--ka-fontFamily-base);
     box-sizing: border-box;

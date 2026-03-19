@@ -1,0 +1,219 @@
+﻿@using Komponenty.Modal
+@using Piaskownica.Classes
+@using Piaskownica.Components.SimplePage
+@using Demos.Modal
+@using static Piaskownica.Classes.LocalizationBase
+@inherits WasmComponentBase
+
+<SimplePage>
+    <SimplePageArticle>
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.BasicExample />
+        <SimplePageParagraph>
+            @Resources.IntroDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ModalIntroDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.FlexCenter" />
+        <SimplePageParagraph>
+            <KAAlert Color="Color.Warning" Icon="@Komponenty.Icons.Preset.Fill.AlertTriangle">
+                <TitleFragment>
+                    <span>@Resources.IntroAlertTitle</span>
+                </TitleFragment>
+                <ContentFragment>
+                    @Resources.IntroAlert
+                </ContentFragment>
+            </KAAlert>
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.OpeningModalTitle />
+        <SimplePageParagraph>
+            @Resources.OpeningModalDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="2" Text=@Resources.OpeningModalThroughInstanceTitle />
+        <SimplePageParagraph>
+            @Resources.OpeningModalThroughInstanceDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="2" Text=@Resources.OpeningModalThroughServiceTitle />
+        <SimplePageParagraph>
+            @Resources.OpeningModalThroughServiceDescription
+        </SimplePageParagraph>
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ClosingModalTitle />
+        <SimplePageParagraph>
+            @Resources.ClosingModalDescription
+        </SimplePageParagraph>
+        <SimplePageParagraph>
+            <KAAlert Color="Color.Warning">
+                <ContentFragment>
+                    @Resources.CloseButtonAlert
+                </ContentFragment>
+            </KAAlert>
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ModalCloseDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.FlexCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.NestedModalsTitle />
+        <SimplePageParagraph>
+            @Resources.NestedModalDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ModalNestedDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.FlexCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.ModalContentTitle />
+        <SimplePageParagraph>
+            @Resources.ModalContentDescription
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ModalContentDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.FlexCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@Resources.KeepMountedTitle />
+        <SimplePageParagraph>
+            @Resources.KeepMountedDescription
+        </SimplePageParagraph>
+        <SimplePageParagraph>
+            <KAAlert Color="Color.Warning">
+                <ContentFragment>
+                    @Resources.KeepMountedAlert
+                </ContentFragment>
+            </KAAlert>
+        </SimplePageParagraph>
+        <Piaskownica.Components.DemoBlock.DemoBlock T="ModalKeepMountedDemo" DisplayStyle="Components.DemoBlock.DemoBlockDisplayStyle.FlexCenter" />
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.ParametersTable />
+        <SimplePageParagraph>
+            <span class="component">@nameof(KAModal)</span>
+        </SimplePageParagraph>
+        <Piaskownica.Components.ParametersTable.ParametersTable T="KAModal" />
+
+        <SimplePageArticleHeading Level="1" Text=@BasicResources.Remarks />
+        <SimplePageParagraph>
+            <ul>
+                <li>@Resources.Remark1</li>
+            </ul>
+        </SimplePageParagraph>
+
+    </SimplePageArticle>
+</SimplePage>
+@code {
+    private static class Resources
+    {
+        public static RenderFragment IntroDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Użyj komponentu <span class="component">@nameof(KAModal)</span> i usługi <span class="class">@nameof(KAModalService)</span>, aby wyświetlić okna modalne.</span>,
+        _ or LocalizationVariant.EN => @<span>Use the <span class="component">@nameof(KAModal)</span> component and <span class="class">@nameof(KAModalService)</span> service to display modal windows.</span>,
+        };
+        public static string IntroAlertTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Wymagany serwis i outlet",
+            _ or LocalizationVariant.EN => "Required service and outlet"
+        };
+        public static RenderFragment IntroAlert => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Modale są zależne od usługi i outletu. Próba inicjializacji modali bez ich zależności spowoduje, że nie będą one działać lub wystąpi błąd wykonania. Pamiętaj, aby zarejestrować wymaganą usługę (<span class="class">@nameof(KAModalService)</span>) i renderować wymagany outlet (<span class="component">@nameof(KAModalOutlet)</span>).</span>,
+        _ or LocalizationVariant.EN => @<span>Modals are dependent on the service and outlet. Attempting to initialise modals without their dependencies will cause them to fail or result in a runtime error. Remember to register the required service (<span class="class">@nameof(KAModalService)</span>) and render the required outlet (<span class="component">@nameof(KAModalOutlet)</span>).</span>,
+        };
+
+        public static string OpeningModalTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Otwieranie modala",
+            _ or LocalizationVariant.EN => "Opening a modal"
+        };
+        public static RenderFragment OpeningModalDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<div>
+                <span>Otwarcie modala może zostać wykonane na dwa sposoby.</span>
+                <ol>
+                    <li>Pierwszym jest wyrenderowanie instancji modala na stronie, ustawienie referencji do komponentu i wywołanie metody <span class="method">@nameof(KAModal.OpenAsync)</span>. Modal można następnie zamknąć w kodzie korzystając z metody <span class="method">@nameof(KAModal.CloseAsync)</span>.</li>
+                    <li>Drugim jest wywołanie metody <span class="method">@nameof(KAModalService.OpenAsync)</span> z serwisu <span class="class">@nameof(KAModalService)</span>. W tym przypadku zwracana jest instancja <span class="class">@nameof(KAModalReference)</span>, którą należy przekazać do metody <span class="method">@nameof(KAModalService.CloseAsync)</span> w serwisie, aby zamknąć modal przez kod.</li>
+                </ol>
+            </div>,
+        _ or LocalizationVariant.EN => @<div>
+            <span>There are two ways to open a modal.</span>
+            <ol>
+                <li>The first is to render the modal instance on the page, set a reference to the component, and call the <span class="method">@nameof(KAModal.OpenAsync)</span> method. The modal can then be closed in the code using the <span class="method">@nameof(KAModal.CloseAsync)</span> method.</li>
+                <li>The second is to call the <span class="method">@nameof(KAModalService.OpenAsync)</span> method from the <span class="class">@nameof(KAModalService)</span> service. In this case, a <span class="class">@nameof(KAModalReference)</span> instance is returned, which must be passed to the <span class="method">@nameof(KAModalService.CloseAsync)</span> method in the service to close the modal via code.</li>
+            </ol>
+        </div>,
+        };
+
+        public static string OpeningModalThroughInstanceTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Poprzez instancję",
+            _ or LocalizationVariant.EN => "Through instance"
+        };
+        public static RenderFragment OpeningModalThroughInstanceDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Otwieranie modala poprzez instancję jest preferowaną metodą, ponieważ zmiany w parametrach modala oraz w samej zawartości modala są odzwierciedlane natychmiastowo bez konieczności wywoływania <span class="method">@nameof(StateHasChanged)</span>.</span>,
+        _ or LocalizationVariant.EN => @<span>Opening a modal via an instance is the preferred method because changes to the modal's parameters and content are reflected immediately without having to call <span class="method">@nameof(StateHasChanged)</span>.</span>,
+        };
+
+        public static string OpeningModalThroughServiceTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Poprzez serwis",
+            _ or LocalizationVariant.EN => "Through service"
+        };
+        public static RenderFragment OpeningModalThroughServiceDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Otwieranie modala poprzez serwis pozwala na otwarcie wybranego komponentu w formie modala, a także na przekazanie parametrów tego komponentu oraz opcji tego modala. Jest to tak naprawdę tylko utworzenie nowej instancji modala z komponentem <span class="component">DynamicComponent</span> wewnątrz, która jest umieszczana w outlecie. Należy pamiętać, że wprowadzenie zmian w parametrach komponentu lub opcjach modala wymaga ręcznego odświeżenia stanu.</span>,
+        _ or LocalizationVariant.EN => @<span>Opening a modal via the service allows you to open the selected component in modal form and pass the parameters of that component and the options of that modal. This is really just creating a new instance of the modal with the <span class="component">DynamicComponent</span> inside, which is placed in the outlet. Please note that making changes to the component parameters or modal options requires manually refreshing the state.</span>,
+        };
+
+        public static string ClosingModalTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Zamykanie modala",
+            _ or LocalizationVariant.EN => "Closing modal"
+        };
+        public static RenderFragment ClosingModalDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Oprócz metody <span class="method">@nameof(KAModal.CloseAsync)</span> , modal można zamknąć poprzez kliknięcie w tło, kliknięcie w przycisk zamykający oraz wciśnięcie klawisza Escape. Każdy z tych sposobów jest sparametryzowany i domyślnie włączony. </span>,
+        _ or LocalizationVariant.EN => @<span>In addition to the <span class="method">@nameof(KAModal.CloseAsync)</span> method, the modal can be closed by clicking on the background, clicking the close button, or pressing the Escape key. Each of these methods is parameterized and enabled by default. </span>,
+        };
+        public static RenderFragment CloseButtonAlert => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Przycisk zamykający renderowany jest w nagłówku modala, więc jeśli owy nagłówek nie jest wyrenderowany to przycisk zamykający również.</span>,
+        _ or LocalizationVariant.EN => @<span>The close button is rendered within the modal header, so if the header is not rendered, neither is the close button.</span>,
+        };
+
+        public static string NestedModalsTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Zagnieżdzone modale",
+            _ or LocalizationVariant.EN => "Nested modals"
+        };
+        public static RenderFragment NestedModalDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Można otwierać wiele modali oraz umieszczać je jeden w drugim. Otwieranie kolejnych modali jest uznawane za tworzenie jednego spójnego drzewa modali. W tym scenariuszu zamknięcie modala ustawionego niżej (rodzica) spowoduje zamknięcie wszystkich modali ustawionych wyżej (dzieci).</span>,
+        _ or LocalizationVariant.EN => @<span>You can open multiple modals and nest them within one another. Opening subsequent modals is treated as creating a single, coherent modal tree. In this scenario, closing a lower-level modal (the parent) will cause all higher-level modals (the children) to close.</span>,
+        };
+
+        public static string ModalContentTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => "Zawartość modala",
+            _ or LocalizationVariant.EN => "Modal's content"
+        };
+        public static RenderFragment ModalContentDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Możesz edytować zawartość modala. Możesz ustawić tytuł modala parametrem <span class="parameter">@nameof(KAModal.Title)</span> lub cały nagłówek parametrem <span class="parameter">@nameof(KAModal.HeaderFragment)</span>. Możesz ustawić przyciski modala parametrem <span class="parameter">@nameof(KAModal.Actions)</span> lub całą stopkę parametrem <span class="parameter">@nameof(KAModal.FooterFragment)</span>. Finalnie ustaw właściwą zawartość modala za pomocą parametru <span class="parameter">@nameof(KAModal.ChildContent)</span>.</span>,
+        _ or LocalizationVariant.EN => @<span>You can edit the modal's content. You can set the modal's title using the <span class="parameter">@nameof(KAModal.Title)</span> parameter or the entire header using the <span class="parameter">@nameof(KAModal.HeaderFragment)</span> parameter. You can set the modal's buttons using the <span class="parameter">@nameof(KAModal.Actions)</span> parameter or the entire footer using the <span class="parameter">@nameof(KAModal.FooterFragment)</span> parameter. Finally, set the modal's actual content using the <span class="parameter">@nameof(KAModal.ChildContent)</span> parameter.</span>,
+        };
+
+        public static string KeepMountedTitle => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => nameof(KAModal.KeepMounted),
+            _ or LocalizationVariant.EN => nameof(KAModal.KeepMounted)
+        };
+        public static RenderFragment KeepMountedDescription => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Domyślnie modal jest renderowany tylko kiedy jest otwarty. Ustaw parametr <span class="parameter">@nameof(KAModal.KeepMounted)</span>, aby jedynie wizualnie ukrywać modal i pozostawić zawartość wyrenderowaną w DOM.</span>,
+        _ or LocalizationVariant.EN => @<span>By default, the modal is only rendered when it is open. Set the <span class="parameter">@nameof(KAModal.KeepMounted)</span> parameter to hide the modal visually whilst leaving its content rendered in the DOM.</span>,
+        };
+        public static RenderFragment KeepMountedAlert => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Parametr <span class="parameter">@nameof(KAModal.KeepMounted)</span> dostępny jest tylko w modalu tworzonym poprzez instancję.</span>,
+        _ or LocalizationVariant.EN => @<span>The <span class="parameter">@nameof(KAModal.KeepMounted)</span> parameter is only available in a modal created via an instance.</span>,
+        };
+
+        public static RenderFragment Remark1 => CurrentLocalization switch
+        {
+            LocalizationVariant.PL => @<span>Domyślnie, gdy modal jest otwarty, styl css ukrywa scroll całej strony, aby uniemożliwić jej przewijanie. Możesz nadpisać to zachowanie globalnie ustawiając zmienną css <code>--ka-hasModal-pageOverflow</code> na wartość <code>initial</code> lub jakąkolwiek inną wartość.</span>,
+        _ or LocalizationVariant.EN => @<span>By default, when a modal is open, a CSS style hides the page's scrollbar to prevent scrolling. You can override this behavior globally by setting the CSS variable <code>--ka-hasModal-pageOverflow</code> to <code>initial</code> or any other value.</span>,
+        };
+    }
+}

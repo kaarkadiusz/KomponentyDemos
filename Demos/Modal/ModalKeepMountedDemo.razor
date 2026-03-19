@@ -1,0 +1,34 @@
+﻿@using Komponenty.Modal
+
+<KAButton Text="Regular Modal" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_regularModal)" />
+<KAButton Text="KeepMounted Modal" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_keepMountedModal)" />
+
+<KAModal @ref="_regularModal" Title="Regular modal">
+    <p>This modal is a regular modal. The following counter component will reinitialize when You open the modal again. This is because the modal will not stay rendered when exited.</p>
+    <Counter />
+</KAModal>
+
+<KAModal @ref="_keepMountedModal" Title="KeepMounted modal" KeepMounted>
+    <p>This modal is a keep mounted modal. The following counter component will <strong>NOT</strong> reinitialize when You open the modal again. This is because the modal will stay rendered when exited.</p>
+    <Counter />
+</KAModal>
+
+
+@code {
+    KAModal? _regularModal, _keepMountedModal;
+
+    private async Task OpenModal(KAModal? modal)
+    {
+        if (modal is not null)
+        {
+            await modal.OpenAsync();
+        }
+    }
+    private async Task CloseModal(KAModal? modal)
+    {
+        if (modal is not null)
+        {
+            await modal.CloseAsync();
+        }
+    }
+}

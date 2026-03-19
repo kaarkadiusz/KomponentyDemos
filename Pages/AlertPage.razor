@@ -77,8 +77,8 @@
     {
         public static RenderFragment IntroDescription => CurrentLocalization switch
         {
-            LocalizationVariant.PL => @<span>Użyj komponentu <span class="component">@nameof(KAToggle<>)</span>, aby wyrenderować konfigurowalny przełącznik.</span>,
-        _ or LocalizationVariant.EN => @<span>Use <span class="component">@nameof(KAToggle<>)</span> component to render a custiomisable toggle switch.</span>,
+            LocalizationVariant.PL => @<span>Użyj komponentu <span class="component">@nameof(KAAlert)</span>, aby wyświetlić okno komunikatu mające na celu zwrócenie uwagi użytkownika na konkretną wiadomość, którą chcesz przekazać.</span>,
+        _ or LocalizationVariant.EN => @<span>Use the <span class="component">@nameof(KAAlert)</span> component to render a message box aiming at drawing user's attention to a specific message you wish to convey.</span>,
         };
 
         public static string ChildContentTitle => nameof(KAAlert.ChildContent);

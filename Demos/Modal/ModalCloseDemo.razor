@@ -1,0 +1,39 @@
+﻿@using Komponenty.Modal
+<KAButton Text="Backdrop" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_closeBackdopModal)" />
+<KAButton Text="Button" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_closeButtonModal)" />
+<KAButton Text="Esc" Variant="ButtonVariant.TextOnly" OnClick="() => OpenModal(_closeEscModal)" />
+
+<KAModal CloseOnBackdropClick="true" CloseOnEscapeKey="false" ShowCloseButton="false" @ref="_closeBackdopModal" Title="CloseBackdrop">
+    <p>This modal can be closed with backdrop click.</p>
+    <KAButton Text="Close manually" Variant="ButtonVariant.TextOnly" OnClick="() => CloseModal(_closeBackdopModal)" />
+</KAModal>
+
+<KAModal CloseOnBackdropClick="false" CloseOnEscapeKey="false" ShowCloseButton="true" @ref="_closeButtonModal" Title="CloseButton">
+    <p>This modal can be closed with close button.</p>
+    <KAButton Text="Close manually" Variant="ButtonVariant.TextOnly" OnClick="() => CloseModal(_closeButtonModal)" />
+</KAModal>
+
+<KAModal CloseOnBackdropClick="false" CloseOnEscapeKey="true" ShowCloseButton="false" @ref="_closeEscModal" Title="CloseEsc">
+    <p>This modal can be closed with pressing the Escape key.</p>
+    <KAButton Text="Close manually" Variant="ButtonVariant.TextOnly" OnClick="() => CloseModal(_closeEscModal)" />
+</KAModal>
+
+@code {
+    KAModal? _closeBackdopModal, _closeEscModal, _closeButtonModal;
+
+    async Task OpenModal(KAModal? modal)
+    {
+        if(modal is not null)
+        {
+            await modal.OpenAsync();
+        }
+    }
+    async Task CloseModal(KAModal? modal)
+    {
+        if (modal is not null)
+        {
+            await modal.CloseAsync();
+        }
+    }
+
+}
